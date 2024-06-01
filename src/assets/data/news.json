@@ -1,0 +1,17 @@
+[
+  {
+    "title": "You can now generate QR Codes on the AI Horde!",
+    "excerpt": "Currently this functionality is only available for Stable Diffusion 1.5.To use this functionality, your frontend needs to support it so that you can type the text you wishto be made into a QR code and to specify the specific qr_code workflow.",
+    "moreLink": null
+  },
+  {
+    "title": "The AI Horde now supports Stable Cascade 2pass",
+    "excerpt": "Simply switch hires_fix to True to use. Note that this has double the cost of a normal Stable Cascade.",
+    "moreLink": null
+  },
+  {
+    "title": "The AI Horde now supports <a href='https://stability.ai/news/introducing-stable-cascade' target='_blank'>Stable Cascade</a> along with its <a href='https://stability.ai/news/introducing-stable-cascade' target='_blank'>image variations / remix capabilities</a>!",
+    "excerpt": null,
+    "moreLink": null
+  }
+]

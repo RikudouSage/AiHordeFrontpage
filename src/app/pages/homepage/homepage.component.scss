@@ -1,0 +1,10 @@
+:host ::ng-deep .sponsor-svg {
+  svg {
+    filter: grayscale(1);
+    transition: filter 500ms;
+
+    &:hover {
+      filter: none;
+    }
+  }
+}

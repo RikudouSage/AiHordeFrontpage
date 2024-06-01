@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+@import "styles/landwind";
+@import "styles/colors";
+
+h3, p {
+  a {
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+      color: darken($lightTextColor, 30%);
+    }
+  }
+}
+
+.dark {
+  h3, p {
+    a:hover {
+      color: lighten($darkTextColor, 30%);
+    }
+  }
+
+  .dark\:fill-white {
+    fill: white;
+  }
+}
+
+#mobile-menu-2 {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.built-with a {
+  color: $purpleTextColor600;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.dark {
+  .built-with a {
+    color: $purpleTextColor500;
+  }
+}
