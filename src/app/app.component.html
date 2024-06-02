@@ -2,7 +2,7 @@
   <header class="fixed w-full">
     <nav class="bg-white border-gray-200 py-2.5 dark:bg-gray-900">
       <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
-        <a href="#" class="flex items-center">
+        <a routerLink="/" class="flex items-center">
           <img src="/assets/img/logo.png" class="h-6 mr-3 sm:h-9" alt="{{'logo.alt' | transloco}}"/>
           <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">{{'app_title' | transloco}}</span>
         </a>
@@ -86,6 +86,9 @@
             </li>
             <li class="mb-4">
               <a href="https://github.com/Haidra-Org/AI-Horde/blob/main/README_StableHorde.md#joining-the-horde" class="hover:underline" target="_blank">{{'join_horde' | transloco}}</a>
+            </li>
+            <li class="mb-4">
+              <a routerLink="/faq" class="hover:underline">{{'frequently_asked_questions' | transloco}}</a>
             </li>
           </ul>
         </div>
