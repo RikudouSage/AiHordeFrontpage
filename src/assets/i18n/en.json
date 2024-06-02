@@ -21,6 +21,7 @@
   "stats.image_queue": "[b]Queue[/b]: {{requests}} requests for a total of {{amount}} {{prefix}}{{pixelsteps}}",
   "stats.text_queue": "[b]Queue[/b]: {{requests}} requests for a total of {{amount}} {{prefix}}{{tokens}}",
   "stats.interrogation_queue": "[b]Queue[/b]: {{forms}} forms",
+  "stats.realtime": "You can see the horde activity (including past stats) on [link:grafanaLink]Grafana[/link]",
   "si_prefix.none": " ",
   "si_prefix.kilo": "kilo",
   "si_prefix.mega": "mega",
@@ -50,5 +51,6 @@
   "join_horde": "Join the Horde",
   "built_with": "Built with [link:angularLink]Angular[/link], [link:flowbiteLink]Flowbite[/link] and [link:tailwindLink]Tailwind CSS[/link].",
   "frequently_asked_questions": "Frequently asked questions",
-  "image_alchemy": "Image alchemy"
+  "image_alchemy": "Image alchemy",
+  "realtime_stats": "Realtime stats"
 }
