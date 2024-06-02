@@ -34,6 +34,6 @@ export class HomepageComponent implements OnInit {
 
   public async ngOnInit(): Promise<void> {
     this.title.setTitle(await toPromise(this.translator.get('app_title')));
-    this.footerColor.dark.set(false);
+    this.footerColor.dark.set(true);
   }
 }
