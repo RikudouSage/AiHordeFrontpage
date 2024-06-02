@@ -17,4 +17,6 @@ export class GuiCardComponent {
   public link = input.required<string>();
   public description = input.required<string>();
   public image = input.required<string>();
+
+  public goToLinkName = input<string | null>(null);
 }

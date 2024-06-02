@@ -57,9 +57,13 @@
   "quickstart.register_account": "First [link:registerLink]register an account[/link] which will generate for you an API key. Store that key somewhere.",
   "quickstart.anonymous_api_key": "if you do not want to register, you can use [b]'0000000000'[/b] as an api key to connect anonymously. However anonymous accounts have the lowest priority when there's too many concurrent requests!",
   "quickstart.explanation_api_key": "To increase your priority you will need a unique API key and then to increase your Kudos. [link:kudosExplanationLink]Read how Kudos are working[/link].",
-  "guis": "GUIs",
+  "guis.image": "Image GUIs",
   "guis.description.horde_ng": "HordeNG aims to be very simple to use for beginners, while allowing the full set of options for advanced users.",
   "guis.web": "Web GUIs",
   "guis.gui_image_alt": "Screenshot of the {{guiName}} GUI",
-  "guis.go_to": "Go to {{guiName}}"
+  "guis.go_to": "Go to {{guiName}}",
+  "guis.android": "Android",
+  "guis.get": "Get {{guiName}}",
+  "guis.ios": "iOS",
+  "guis.desktop": "Desktop"
 }
