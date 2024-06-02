@@ -1,4 +1,10 @@
-<div class="flex flex-col max-w-lg p-6 mx-auto text-center text-gray-900 bg-white border border-gray-100 rounded-lg shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+<div
+  class="flex flex-col max-w-lg p-6 mx-auto text-center text-gray-900 border border-gray-100 rounded-lg shadow dark:border-gray-600 xl:p-8 dark:text-white"
+  [class.bg-white]="!darkBackground()"
+  [class.bg-gray-50]="darkBackground()"
+  [class.dark:bg-gray-800]="!darkBackground()"
+  [class.dark:bg-gray-900]="darkBackground()"
+>
   <h3 class="mb-4 text-2xl font-semibold">{{name()}}</h3>
   <p class="font-light text-gray-500 sm:text-lg dark:text-gray-400 description">{{description()}}</p>
   <div class="flex items-baseline justify-center my-8">

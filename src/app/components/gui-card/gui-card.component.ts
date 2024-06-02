@@ -19,4 +19,5 @@ export class GuiCardComponent {
   public image = input.required<string>();
 
   public goToLinkName = input<string | null>(null);
+  public darkBackground = input(false);
 }
