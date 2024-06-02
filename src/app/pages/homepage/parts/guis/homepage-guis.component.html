@@ -54,3 +54,41 @@
     </div>
   </div>
 </section>
+<section class="bg-gray-50 dark:bg-gray-800">
+  <div class="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
+    <div class="items-center gap-8 lg:grid xl:gap-16">
+      <div class="text-gray-500 sm:text-lg dark:text-gray-400">
+        <h2 class="mb-6 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+          <transloco key="guis.text" />
+        </h2>
+
+        <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{'guis.desktop' | transloco}}</h3>
+        <div class="items-center border-t max-w-screen-xl px-4 mx-auto lg:grid lg:grid-cols-3 lg:gap-16 xl:gap-24 lg:px-6 py-6">
+          <div class="space-y-8 sm:gap-6 xl:gap-10 lg:space-y-0">
+            <app-gui-card name="KoboldAI Client" description="TODO" image="https://placehold.co/330x185" link="https://koboldai.org/" [goToLinkName]="'guis.get' | transloco:{guiName: 'KoboldAI Client'}"/>
+          </div>
+        </div>
+
+        <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{'guis.web' | transloco}}</h3>
+        <div class="items-center border-t max-w-screen-xl px-4 mx-auto lg:grid lg:grid-cols-3 lg:gap-16 xl:gap-24 lg:px-6 py-6">
+          <div class="space-y-8 sm:gap-6 xl:gap-10 lg:space-y-0">
+            <app-gui-card name="KoboldAI Lite" description="TODO" image="https://placehold.co/330x185" link="https://lite.koboldai.net/" />
+          </div>
+          <div class="space-y-8 sm:gap-6 xl:gap-10 lg:space-y-0">
+            <app-gui-card name="SillyTavern" description="TODO" image="https://placehold.co/330x185" link="https://sillytavernai.com/" />
+          </div>
+          <div class="space-y-8 sm:gap-6 xl:gap-10 lg:space-y-0">
+            <app-gui-card name="AgnAIstic" description="TODO" image="https://placehold.co/330x185" link="https://agnai.chat/" />
+          </div>
+        </div>
+
+        <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{'guis.ios' | transloco}}</h3>
+        <div class="items-center border-t max-w-screen-xl px-4 mx-auto lg:grid lg:grid-cols-3 lg:gap-16 xl:gap-24 lg:px-6 py-6">
+          <div class="space-y-8 sm:gap-6 xl:gap-10 lg:space-y-0">
+            <app-gui-card name="Inneal" description="TODO" image="https://placehold.co/330x185" link="https://github.com/amiantos/inneal" [goToLinkName]="'guis.get' | transloco:{guiName: 'Inneal'}"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
