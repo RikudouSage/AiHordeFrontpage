@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable, of} from "rxjs";
+import {map, Observable, of} from "rxjs";
 import {ImageTotalStats} from "../types/image-total-stats";
 import {HordePerformance} from "../types/horde-performance";
 import {TextTotalStats} from "../types/text-total-stats";
+import {NewsItem} from "../types/news.types";
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +39,11 @@ export class AiHordeService {
 
   public get performance(): Observable<HordePerformance> {
     return this.httpClient.get<HordePerformance>('https://aihorde.net/api/v2/status/performance');
+  }
+
+  public getNews(count: number): Observable<NewsItem[]> {
+    return this.httpClient.get<NewsItem[]>('/assets/data/news.json').pipe(
+      map(items => items.slice(0, count)),
+    );
   }
 }

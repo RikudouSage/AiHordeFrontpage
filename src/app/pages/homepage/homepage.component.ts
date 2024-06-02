@@ -2,7 +2,6 @@ import {Component, OnInit, signal} from '@angular/core';
 import {JsonPipe, NgOptimizedImage, UpperCasePipe} from "@angular/common";
 import {TranslocoMarkupComponent} from "ngx-transloco-markup";
 import {TranslocoPipe} from "@jsverse/transloco";
-import {NewsService} from "../../services/news.service";
 import {NewsItem} from "../../types/news.types";
 import {RouterLink} from "@angular/router";
 import {InlineSvgComponent} from "../../components/inline-svg/inline-svg.component";
@@ -42,13 +41,12 @@ export class HomepageComponent implements OnInit {
   public textStats = signal<SingleTextStatPoint | null>(null);
 
   constructor(
-    private readonly newsService: NewsService,
     private readonly aiHorde: AiHordeService,
   ) {
   }
 
   public async ngOnInit(): Promise<void> {
-    this.news.set(await this.newsService.getNews(3));
+    this.news.set(await toPromise(this.aiHorde.getNews(3)));
     this.stats.set(await toPromise(this.aiHorde.performance));
     this.imageStats.set((await toPromise(this.aiHorde.imageStats)).total);
     this.textStats.set((await toPromise(this.aiHorde.textStats)).total);
