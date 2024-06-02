@@ -14,7 +14,7 @@
       <div class="max-w-screen-xl mx-auto">
 
         <div data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white" data-inactive-classes="text-gray-500 dark:text-gray-400">
-          @for (sectionItemPair of faq()! | keyvalue:keyValueComparator; track sectionItemPair) {
+          @for (sectionItemPair of faq()! | keyvalue:NoSorterKeyValue; track sectionItemPair) {
             @if (sectionItemPair.key !== '') {
               <h2 class="mt-12 text-3xl font-extrabold tracking-tight text-center text-gray-900 lg:text-3xl dark:text-white">{{sectionItemPair.key}}</h2> <!-- todo make translatable -->
             }

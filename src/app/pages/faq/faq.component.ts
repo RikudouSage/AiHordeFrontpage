@@ -10,6 +10,7 @@ import {InlineSvgComponent} from "../../components/inline-svg/inline-svg.compone
 import {TranslatorService} from "../../services/translator.service";
 import {FooterColorService} from "../../services/footer-color.service";
 import {SortedItems} from "../../types/sorted-items";
+import {NoSorterKeyValue} from "../../types/no-sorter-key-value";
 
 @Component({
   selector: 'app-faq',
@@ -25,11 +26,7 @@ import {SortedItems} from "../../types/sorted-items";
   styleUrl: './faq.component.scss'
 })
 export class FaqComponent implements OnInit {
-  /**
-   * This is used as a sorter for the `keyvalue` pipe in the template. By default, keys are sorted alphabetically,
-   * this function makes it keep the original order from the source object.
-   */
-  protected readonly keyValueComparator = () => 0;
+  protected readonly NoSorterKeyValue = NoSorterKeyValue;
 
   public faq = signal<SortedItems<FaqItem>>(new Map<string, FaqItem[]>());
   public selectedFaq = signal<string | null>(null);

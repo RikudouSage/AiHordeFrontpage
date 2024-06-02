@@ -22,6 +22,8 @@ import {NoSorterKeyValue} from "../../../../types/no-sorter-key-value";
   styleUrl: './homepage-tools.component.scss'
 })
 export class HomepageToolsComponent implements OnInit {
+  protected readonly NoSorterKeyValue = NoSorterKeyValue;
+
   public tools = toSignal(this.dataService.tools);
 
   constructor(
@@ -32,6 +34,4 @@ export class HomepageToolsComponent implements OnInit {
   public async ngOnInit(): Promise<void> {
 
   }
-
-  protected readonly NoSorterKeyValue = NoSorterKeyValue;
 }
