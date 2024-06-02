@@ -1,0 +1,41 @@
+@import "../../../styles/colors";
+
+:host ::ng-deep {
+  .faq-answer {
+    p, ul {
+      margin-bottom: 0.5rem;
+      color: $lightTextColor;
+      margin-top: 0.2rem;
+    }
+
+    li {
+      list-style-type: disc;
+      margin-left: 18px;
+      padding-left: 18px;
+      margin-bottom: 0.5rem;
+    }
+
+    a {
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+        color: darken($lightTextColor, 30%);
+      }
+    }
+  }
+}
+
+.dark {
+  :host ::ng-deep {
+    .faq-answer {
+      p, ul {
+        color: $darkTextColor;
+      }
+
+      a:hover {
+        color: lighten($darkTextColor, 30%);
+      }
+    }
+  }
+}

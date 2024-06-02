@@ -46,5 +46,6 @@
   "documentation": "Documentation",
   "rest_api": "REST api",
   "join_horde": "Join the Horde",
-  "built_with": "Built with [link:angularLink]Angular[/link], [link:flowbiteLink]Flowbite[/link] and [link:tailwindLink]Tailwind CSS[/link]."
+  "built_with": "Built with [link:angularLink]Angular[/link], [link:flowbiteLink]Flowbite[/link] and [link:tailwindLink]Tailwind CSS[/link].",
+  "frequently_asked_questions": "Frequently asked questions"
 }

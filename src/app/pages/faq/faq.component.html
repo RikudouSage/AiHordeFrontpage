@@ -1,1 +1,50 @@
-<p>faq works!</p>
+<section class="bg-white dark:bg-gray-900">
+  <div class="grid max-w-screen-xl px-4 pt-20 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:pt-28">
+    <div class="mr-auto place-self-center lg:col-span-7">
+      <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white">
+        <transloco key="frequently_asked_questions" />
+      </h1>
+    </div>
+  </div>
+</section>
+
+@if (faq()) {
+  <section class="bg-gray-50 dark:bg-gray-800">
+    <div class="max-w-screen-xl px-4 pb-8 mx-auto lg:pb-24 lg:px-6 ">
+      <div class="max-w-screen-xl mx-auto">
+
+        <div data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white" data-inactive-classes="text-gray-500 dark:text-gray-400">
+          @for (sectionItemPair of faq()! | keyvalue:keyValueComparator; track sectionItemPair) {
+            @if (sectionItemPair.key !== '') {
+              <h2 class="mt-12 text-3xl font-extrabold tracking-tight text-center text-gray-900 lg:text-3xl dark:text-white">{{sectionItemPair.key}}</h2> <!-- todo make translatable -->
+            }
+
+            @for (faqItem of sectionItemPair.value; track faqItem.question) {
+              <h3>
+                <button
+                  type="button"
+                  [class.text-gray-500]="selectedFaq() !== faqItem.question"
+                  [class.dark:text-gray-400]="selectedFaq() !== faqItem.question"
+                  [class.text-gray-900]="selectedFaq() === faqItem.question"
+                  [class.dark:text-white]="selectedFaq() === faqItem.question"
+                  [class.font-bold]="selectedFaq() === faqItem.question"
+                  class="flex items-center justify-between w-full py-5 font-medium text-left border-b border-gray-200 dark:border-gray-700"
+                  (click)="selectedFaq.set(selectedFaq() === faqItem.question ? null : faqItem.question)"
+                >
+                  <span>{{faqItem.question}}</span>
+                  <inline-svg href="/assets/img/faq-closed.svg" [class.rotate-180]="selectedFaq() === faqItem.question" />
+                </button>
+              </h3>
+              <div [class.hidden]="selectedFaq() !== faqItem.question">
+                <div class="py-5 border-b border-gray-200 dark:border-gray-700 faq-answer">
+                  <div [innerHTML]="faqItem.answer"></div>
+<!--                  <p class="mb-2 text-gray-500 dark:text-gray-400" [innerHTML]="faqItem.answer"></p>-->
+                </div>
+              </div>
+            }
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+}
