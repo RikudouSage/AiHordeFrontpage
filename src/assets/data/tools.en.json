@@ -1,0 +1,32 @@
+[
+  {
+    "name": "AI Horde CLI",
+    "description": "The official AI Horde CLI that supports all features of AI Horde.",
+    "link": "https://github.com/Haidra-Org/AI-Horde-CLI",
+    "category": "Official tools"
+  },
+  {
+    "name": "Godot Engine plugin",
+    "description": "Easily integrate AI Horde image generation into your games.",
+    "link": "https://github.com/Haidra-Org/AI-Horde-Godot-Addon",
+    "category": "Official tools"
+  },
+  {
+    "name": "Discord Bot",
+    "description": "Add to your server to generate images for free and transfer kudos.",
+    "link": "https://github.com/ZeldaFan0225/Stable_Horde_Discord",
+    "category": "Official tools"
+  },
+  {
+    "name": "Mastodon bots",
+    "description": "Generate images via ActivityPub just by pinging the bots.",
+    "link": "https://github.com/Haidra-Org/mastodon-ai-horde-generate",
+    "category": "Official tools"
+  },
+  {
+    "name": "Reddit bot",
+    "description": "Generate images directly via Reddit by tagging the bot.",
+    "link": "https://github.com/Haidra-Org/reddit-stable-horde-generate",
+    "category": "Official tools"
+  }
+]

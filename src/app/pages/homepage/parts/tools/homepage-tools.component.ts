@@ -1,8 +1,12 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {GuiCardComponent} from "../../../../components/gui-card/gui-card.component";
 import {TranslocoMarkupComponent} from "ngx-transloco-markup";
 import {TranslocoPipe} from "@jsverse/transloco";
 import {ToolCardComponent} from "../../../../components/tool-card/tool-card.component";
+import {DataService} from "../../../../services/data.service";
+import {toSignal} from "@angular/core/rxjs-interop";
+import {KeyValuePipe} from "@angular/common";
+import {NoSorterKeyValue} from "../../../../types/no-sorter-key-value";
 
 @Component({
   selector: 'app-homepage-tools',
@@ -11,11 +15,23 @@ import {ToolCardComponent} from "../../../../components/tool-card/tool-card.comp
     GuiCardComponent,
     TranslocoMarkupComponent,
     TranslocoPipe,
-    ToolCardComponent
+    ToolCardComponent,
+    KeyValuePipe
   ],
   templateUrl: './homepage-tools.component.html',
   styleUrl: './homepage-tools.component.scss'
 })
-export class HomepageToolsComponent {
+export class HomepageToolsComponent implements OnInit {
+  public tools = toSignal(this.dataService.tools);
 
+  constructor(
+    private readonly dataService: DataService,
+  ) {
+  }
+
+  public async ngOnInit(): Promise<void> {
+
+  }
+
+  protected readonly NoSorterKeyValue = NoSorterKeyValue;
 }

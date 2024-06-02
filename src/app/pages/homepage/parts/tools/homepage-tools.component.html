@@ -1,20 +1,22 @@
-<section class="bg-white dark:bg-gray-900">
-  <div class="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
-    <div class="items-center gap-8 lg:grid xl:gap-16">
-      <div class="text-gray-500 sm:text-lg dark:text-gray-400">
-        <h2 class="mb-6 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">
-          <transloco key="tools" />
-        </h2>
+@if (tools()) {
+  <section class="bg-white dark:bg-gray-900">
+    <div class="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
+      <div class="items-center gap-8 lg:grid xl:gap-16">
+        <div class="text-gray-500 sm:text-lg dark:text-gray-400">
+          <h2 class="mb-6 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+            <transloco key="tools" />
+          </h2>
 
-        <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{'tools.official' | transloco}}</h3>
-        <div class="items-center border-t max-w-screen-xl px-4 mx-auto lg:grid lg:grid-cols-4 lg:gap-8 xl:gap-10 lg:px-6 py-6">
-          <app-tool-card name="AI Horde CLI" link="https://github.com/Haidra-Org/AI-Horde-CLI" [description]="'tools.ai_horde_cli.description' | transloco" />
-          <app-tool-card name="Godot Engine plugin" link="https://github.com/Haidra-Org/AI-Horde-Godot-Addon" [description]="'tools.ai_horde_godot_plugin.description' | transloco" />
-          <app-tool-card name="Discord Bot" link="https://github.com/ZeldaFan0225/Stable_Horde_Discord" [description]="'tools.discord_bot.description' | transloco" />
-          <app-tool-card name="Mastodon bots" link="https://github.com/Haidra-Org/mastodon-ai-horde-generate" [description]="'tools.mastodon_bots.description' | transloco" />
-          <app-tool-card name="Reddit bot" link="https://github.com/Haidra-Org/reddit-stable-horde-generate" [description]="'tools.reddit_bot.description' | transloco" />
+          @for (pair of tools()! | keyvalue:NoSorterKeyValue; track pair) {
+            <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{pair.key}}</h3>
+            <div class="items-center border-t max-w-screen-xl px-4 mx-auto lg:grid lg:grid-cols-4 lg:gap-8 xl:gap-10 lg:px-6 py-6">
+              @for (tool of pair.value; track tool.name) {
+                <app-tool-card [name]="tool.name" [link]="tool.link" [description]="tool.description" />
+              }
+            </div>
+          }
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+}

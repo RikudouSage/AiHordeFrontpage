@@ -3,8 +3,3 @@ export interface FaqItem {
   answer: string;
   section: string | null;
 }
-
-export type SortedFaqItems = Map<string, FaqItem[]>;
-// export interface SortedFaqItems {
-//   [section: string]: FaqItem[];
-// }
