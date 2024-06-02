@@ -12,7 +12,7 @@ import {SingleImageStatPoint} from "../../../../types/single-image-stat-point";
 import {SingleTextStatPoint} from "../../../../types/single-text-stat-point";
 import {AiHordeService} from "../../../../services/ai-horde.service";
 import {toPromise} from "../../../../types/resolvable";
-import {combineLatest, combineLatestWith, interval, startWith, zip} from "rxjs";
+import {combineLatestWith, interval, startWith} from "rxjs";
 import {Subscriptions} from "../../../../helper/subscriptions";
 
 @Component({

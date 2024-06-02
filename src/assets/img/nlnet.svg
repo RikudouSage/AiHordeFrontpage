@@ -1,4 +1,5 @@
-<svg width="190px" height="80px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+<svg width="190px" height="80px" version="1.1" xmlns="http://www.w3.org/2000/svg" xml:space="preserve"
+     style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
     <g transform="matrix(0.47619,0,0,0.47619,0.0952381,0)">
         <g transform="matrix(0.869481,0,0,0.869481,4.11434,10.9736)">
             <path d="M446.603,73.881L449.102,60.236L436.207,60.236L439.955,40.144L424.512,46.192L422.013,60.236L412.616,60.236L410.117,73.881L419.364,73.881L416.215,91.174C416.065,92.124 415.815,93.523 415.565,95.322C415.315,97.122 415.165,98.721 415.165,100.07C415.215,106.318 416.715,111.466 419.664,115.514C422.612,119.663 427.41,122.112 434.108,122.861L440.555,109.567C437.107,109.117 434.508,107.767 432.658,105.468C430.809,103.119 429.909,100.17 429.909,96.572C429.909,95.872 430.009,94.873 430.159,93.523C430.309,92.174 430.459,91.074 430.609,90.224L433.608,73.881L446.603,73.881Z" style="fill:rgb(152,192,0);fill-rule:nonzero;"/>

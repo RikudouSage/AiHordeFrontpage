@@ -1,12 +1,13 @@
 import {Component, OnInit, signal} from '@angular/core';
 import {Title} from "@angular/platform-browser";
-import {TranslocoPipe, TranslocoService} from "@jsverse/transloco";
+import {TranslocoPipe} from "@jsverse/transloco";
 import {FaqService} from "../../services/faq.service";
 import {FaqItem, SortedFaqItems} from "../../types/faq-item";
 import {toPromise} from "../../types/resolvable";
-import {KeyValue, KeyValuePipe, NgOptimizedImage} from "@angular/common";
+import {KeyValuePipe, NgOptimizedImage} from "@angular/common";
 import {TranslocoMarkupComponent} from "ngx-transloco-markup";
 import {InlineSvgComponent} from "../../components/inline-svg/inline-svg.component";
+import {TranslatorService} from "../../services/translator.service";
 
 @Component({
   selector: 'app-faq',
@@ -33,13 +34,13 @@ export class FaqComponent implements OnInit {
 
   constructor(
     private readonly title: Title,
-    private readonly translator: TranslocoService,
+    private readonly translator: TranslatorService,
     private readonly faqService: FaqService,
   ) {
   }
 
   public async ngOnInit(): Promise<void> {
-    this.title.setTitle(this.translator.translate('frequently_asked_questions') + ' | ' + this.translator.translate('app_title'));
+    this.title.setTitle(await toPromise(this.translator.get('frequently_asked_questions')) + ' | ' + await toPromise(this.translator.get('app_title')));
     this.faq.set(await toPromise(this.faqService.faq));
   }
 }

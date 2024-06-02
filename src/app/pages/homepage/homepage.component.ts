@@ -4,7 +4,8 @@ import {HomepageSponsorsComponent} from "./parts/sponsors/homepage-sponsors.comp
 import {HomepageLatestNewsComponent} from "./parts/latest-news/homepage-latest-news.component";
 import {HomepageStatsComponent} from "./parts/stats/homepage-stats.component";
 import {Title} from "@angular/platform-browser";
-import {TranslocoService} from "@jsverse/transloco";
+import {TranslatorService} from "../../services/translator.service";
+import {toPromise} from "../../types/resolvable";
 
 @Component({
   selector: 'app-homepage',
@@ -21,11 +22,11 @@ import {TranslocoService} from "@jsverse/transloco";
 export class HomepageComponent implements OnInit {
   constructor(
     private readonly title: Title,
-    private readonly translator: TranslocoService,
+    private readonly translator: TranslatorService,
   ) {
   }
 
-  ngOnInit(): void {
-    this.title.setTitle(this.translator.translate('app_title'));
+  public async ngOnInit(): Promise<void> {
+    this.title.setTitle(await toPromise(this.translator.get('app_title')));
   }
 }
