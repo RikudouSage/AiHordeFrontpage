@@ -1,10 +1,11 @@
-@if (stats() && imageStats() && textStats()) {
+@if (stats() && imageStats() && textStats() && interrogationStats()) {
   <section class="bg-white dark:bg-gray-900">
     <div class="max-w-screen-xl px-4 py-8 mx-auto lg:py-24 lg:px-6">
       <div class="max-w-screen-md mx-auto mb-2 text-center">
         <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">{{'stats' | transloco}}</h2>
       </div>
       <div class="items-center max-w-screen-xl px-4 mx-auto lg:grid lg:grid-cols-2 lg:gap-16 xl:gap-24 lg:px-6 py-6">
+        <!-- image stats -->
         <div class="space-y-8 sm:gap-6 xl:gap-10 lg:space-y-0">
           <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{'image_stats' | transloco}}</h3>
           <ul role="list" class="pt-8 space-y-5 border-t border-gray-200 my-7 dark:border-gray-700">
@@ -56,6 +57,7 @@
             </li>
           </ul>
         </div>
+        <!-- text stats -->
         <div class="space-y-8 sm:gap-6 xl:gap-10 lg:space-y-0">
           <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-right">{{'text_stats' | transloco}}</h3>
           <ul role="list" class="pt-8 space-y-5 border-t border-gray-200 my-7 dark:border-gray-700">
@@ -104,6 +106,40 @@
                  prefix: stats()!.queued_tokens | siPrefix
               }" />
             </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="items-center max-w-screen-xl px-4 mx-auto lg:grid lg:grid-cols-2 lg:gap-16 xl:gap-24 lg:px-6 py-6">
+        <!-- interrogation stats -->
+        <div class="space-y-8 sm:gap-6 xl:gap-10 lg:space-y-0">
+          <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{'image_alchemy' | transloco}}</h3>
+          <ul role="list" class="pt-8 space-y-5 border-t border-gray-200 my-7 dark:border-gray-700">
+            <li class="flex space-x-3">
+              <inline-svg href="/assets/img/li-checkbox.svg" />
+              <span class="text-base font-medium leading-tight text-gray-900 dark:text-white">
+                <transloco key="stats.total_alchemy_processed" [params]="{
+                   amount: interrogationStats()!.processed | shiftDecimalsLeft | formatNumber:1,
+                   unit: interrogationStats()!.processed | siPrefix | cut:1 | uppercase
+                }" />
+              </span>
+            </li>
+            <li class="flex space-x-3">
+              <inline-svg href="/assets/img/li-checkbox.svg" />
+              <span class="text-base font-medium leading-tight text-gray-900 dark:text-white">
+                <transloco key="stats.active_workers" [params]="{
+                   workers: stats()!.interrogator_count | formatNumber,
+                   threads: stats()!.interrogator_thread_count | formatNumber
+                }" />
+              </span>
+            </li>
+            <li class="flex space-x-3">
+              <inline-svg href="/assets/img/li-checkbox.svg" />
+              <span class="text-base font-medium leading-tight text-gray-900 dark:text-white">
+                <transloco key="stats.interrogation_queue" [params]="{
+                   forms: stats()!.queued_forms | formatNumber
+                }" />
+              </span>
             </li>
           </ul>
         </div>

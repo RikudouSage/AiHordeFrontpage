@@ -14,6 +14,7 @@ import {AiHordeService} from "../../../../services/ai-horde.service";
 import {toPromise} from "../../../../types/resolvable";
 import {combineLatestWith, interval, startWith} from "rxjs";
 import {Subscriptions} from "../../../../helper/subscriptions";
+import {SingleInterrogationStatPoint} from "../../../../types/single-interrogation-stat-point";
 
 @Component({
   selector: 'app-homepage-stats',
@@ -38,6 +39,7 @@ export class HomepageStatsComponent implements OnInit, OnDestroy {
   public stats = signal<HordePerformance | null>(null);
   public imageStats = signal<SingleImageStatPoint | null>(null);
   public textStats = signal<SingleTextStatPoint | null>(null);
+  public interrogationStats = signal<SingleInterrogationStatPoint | null>(null);
 
   constructor(
     private readonly aiHorde: AiHordeService,
@@ -54,16 +56,18 @@ export class HomepageStatsComponent implements OnInit, OnDestroy {
     if (this.isBrowser) {
       this.subscriptions.add(interval(60_000).pipe(
         startWith(0),
-        combineLatestWith(this.aiHorde.performance, this.aiHorde.imageStats, this.aiHorde.textStats)
+        combineLatestWith(this.aiHorde.performance, this.aiHorde.imageStats, this.aiHorde.textStats, this.aiHorde.interrogationStats)
       ).subscribe(value => {
         this.stats.set(value[1]);
         this.imageStats.set(value[2].total);
         this.textStats.set(value[3].total);
+        this.interrogationStats.set(value[4]);
       }));
     } else {
       this.stats.set(await toPromise(this.aiHorde.performance));
       this.imageStats.set((await toPromise(this.aiHorde.imageStats)).total);
       this.textStats.set((await toPromise(this.aiHorde.textStats)).total);
+      this.interrogationStats.set(await toPromise(this.aiHorde.interrogationStats));
     }
   }
 }

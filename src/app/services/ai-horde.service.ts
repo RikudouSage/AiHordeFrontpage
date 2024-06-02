@@ -5,6 +5,7 @@ import {ImageTotalStats} from "../types/image-total-stats";
 import {HordePerformance} from "../types/horde-performance";
 import {TextTotalStats} from "../types/text-total-stats";
 import {NewsItem} from "../types/news.types";
+import {SingleInterrogationStatPoint} from "../types/single-interrogation-stat-point";
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,12 @@ export class AiHordeService {
 
   public get performance(): Observable<HordePerformance> {
     return this.httpClient.get<HordePerformance>('https://aihorde.net/api/v2/status/performance');
+  }
+
+  public get interrogationStats(): Observable<SingleInterrogationStatPoint> {
+    return of({
+      processed: 663723,
+    });
   }
 
   public getNews(count: number): Observable<NewsItem[]> {

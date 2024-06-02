@@ -16,9 +16,11 @@
   "stats.total_tokens": "[b]Total generated[/b]: {{amount}} {{prefix}}{{tokens}}",
   "stats.total_images": "[b]Total image requests fulfilled[/b]: {{amount}}{{unit}}",
   "stats.total_texts": "[b]Total text requests fulfilled[/b]: {{amount}}{{unit}}",
+  "stats.total_alchemy_processed": "[b]Total processed[/b]: {{amount}}{{unit}}",
   "stats.active_workers": "[b]Active workers/threads[/b]: {{workers}}/{{threads}}",
   "stats.image_queue": "[b]Queue[/b]: {{requests}} requests for a total of {{amount}} {{prefix}}{{pixelsteps}}",
   "stats.text_queue": "[b]Queue[/b]: {{requests}} requests for a total of {{amount}} {{prefix}}{{tokens}}",
+  "stats.interrogation_queue": "[b]Queue[/b]: {{forms}} forms",
   "si_prefix.none": " ",
   "si_prefix.kilo": "kilo",
   "si_prefix.mega": "mega",
@@ -47,5 +49,6 @@
   "rest_api": "REST api",
   "join_horde": "Join the Horde",
   "built_with": "Built with [link:angularLink]Angular[/link], [link:flowbiteLink]Flowbite[/link] and [link:tailwindLink]Tailwind CSS[/link].",
-  "frequently_asked_questions": "Frequently asked questions"
+  "frequently_asked_questions": "Frequently asked questions",
+  "image_alchemy": "Image alchemy"
 }
