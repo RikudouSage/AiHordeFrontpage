@@ -1,0 +1,29 @@
+<section class="bg-gray-50 dark:bg-gray-800">
+  <div class="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
+    <div class="items-center gap-8 lg:grid xl:gap-16">
+      <div class="text-gray-500 sm:text-lg dark:text-gray-400">
+        <h2 class="mb-6 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+          <transloco key="quickstart" />
+        </h2>
+
+        <p class="mb-4">
+          <transloco key="quickstart.register_account" [params]="{registerLink: {route: '/register'}}" />
+        </p>
+        <ul class="mb-2 space-y-2">
+          <li class="flex space-x-3">
+            <inline-svg href="/assets/img/li-checkbox.svg" />
+            <span class="text-base">
+              <transloco key="quickstart.anonymous_api_key" />
+            </span>
+          </li>
+          <li class="flex space-x-3">
+            <inline-svg href="/assets/img/li-checkbox.svg" />
+            <span class="text-base">
+              <transloco key="quickstart.explanation_api_key" [params]="{kudosExplanationLink: 'https://dbzer0.com/blog/the-kudos-based-economy-for-the-koboldai-horde/'}" />
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

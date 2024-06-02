@@ -1,0 +1,10 @@
+@mixin mt($amount) {
+  margin-top: 0.25rem * $amount;
+}
+
+@mixin spaceY($amount) {
+  $num: 0.25rem * $amount;
+  --tw-space-y-reverse: 0;
+  margin-top: calc($num * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc($num * var(--tw-space-y-reverse));
+}

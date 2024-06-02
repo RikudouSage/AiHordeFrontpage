@@ -1,5 +1,6 @@
 @import "styles/landwind";
 @import "styles/colors";
+@import "styles/mixins";
 
 h3, p, .underline-links {
   a {
@@ -44,5 +45,9 @@ h3, p, .underline-links {
 }
 
 .mt-12 {
-  margin-top: 0.25rem * 12;
+  @include mt(12);
+}
+
+.space-y-2 > :not([hidden]) ~ :not([hidden]) {
+  @include spaceY(2);
 }

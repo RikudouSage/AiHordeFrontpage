@@ -6,6 +6,7 @@ import {HomepageStatsComponent} from "./parts/stats/homepage-stats.component";
 import {Title} from "@angular/platform-browser";
 import {TranslatorService} from "../../services/translator.service";
 import {toPromise} from "../../types/resolvable";
+import {HomepageQuickstartComponent} from "./parts/quickstart/homepage-quickstart.component";
 
 @Component({
   selector: 'app-homepage',
@@ -14,7 +15,8 @@ import {toPromise} from "../../types/resolvable";
     HomepageIntroComponent,
     HomepageSponsorsComponent,
     HomepageLatestNewsComponent,
-    HomepageStatsComponent
+    HomepageStatsComponent,
+    HomepageQuickstartComponent
   ],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.scss'
