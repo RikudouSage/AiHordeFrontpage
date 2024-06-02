@@ -9,6 +9,7 @@ import {toPromise} from "../../types/resolvable";
 import {HomepageQuickstartComponent} from "./parts/quickstart/homepage-quickstart.component";
 import {HomepageGuisComponent} from "./parts/guis/homepage-guis.component";
 import {FooterColorService} from "../../services/footer-color.service";
+import {HomepageToolsComponent} from "./parts/tools/homepage-tools.component";
 
 @Component({
   selector: 'app-homepage',
@@ -19,7 +20,8 @@ import {FooterColorService} from "../../services/footer-color.service";
     HomepageLatestNewsComponent,
     HomepageStatsComponent,
     HomepageQuickstartComponent,
-    HomepageGuisComponent
+    HomepageGuisComponent,
+    HomepageToolsComponent
   ],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.scss'
@@ -34,6 +36,6 @@ export class HomepageComponent implements OnInit {
 
   public async ngOnInit(): Promise<void> {
     this.title.setTitle(await toPromise(this.translator.get('app_title')));
-    this.footerColor.dark.set(true);
+    this.footerColor.dark.set(false);
   }
 }

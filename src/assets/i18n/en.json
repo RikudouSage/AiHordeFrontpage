@@ -66,5 +66,8 @@
   "guis.android": "Android",
   "guis.get": "Get {{guiName}}",
   "guis.ios": "iOS",
-  "guis.desktop": "Desktop"
+  "guis.desktop": "Desktop",
+  "tools": "Tools",
+  "tools.official": "Official tools",
+  "tools.ai_horde_cli.description": "The official AI Horde CLI that supports all features of AI Horde."
 }
