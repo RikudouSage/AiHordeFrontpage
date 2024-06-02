@@ -71,5 +71,7 @@
   "tools.official": "Official tools",
   "tools.ai_horde_cli.description": "The official AI Horde CLI that supports all features of AI Horde.",
   "tools.ai_horde_godot_plugin.description": "Easily integrate AI Horde image generation into your games.",
-  "tools.discord_bot.description": "Add to your server to generate images for free and transfer kudos."
+  "tools.discord_bot.description": "Add to your server to generate images for free and transfer kudos.",
+  "tools.mastodon_bots.description": "Generate images via ActivityPub just by pinging the bots.",
+  "tools.reddit_bot.description": "Generate images directly via Reddit by tagging the bot."
 }

@@ -5,10 +5,6 @@
   [class.dark:bg-gray-800]="!darkBackground()"
   [class.dark:bg-gray-900]="darkBackground()"
 >
-  <h3 class="mb-4 text-2xl font-semibold">{{name()}}</h3>
-  <p class="font-light text-gray-500 sm:text-lg dark:text-gray-400 description mb-8">{{description()}}</p>
-
-  <a href="{{link()}}" target="_blank" class="text-white bg-purple-600 hover:bg-purple-700 focus:ring-4 focus:ring-purple-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-purple-900">
-    {{'guis.go_to' | transloco:{guiName: name()} }}
-  </a>
+  <h3 class="mb-4 text-xl font-semibold"><a [href]="link()" target="_blank">{{name()}}</a></h3>
+  <p class="font-light text-gray-500 sm:text-lg dark:text-gray-400 description mb-2">{{description()}}</p>
 </div>
