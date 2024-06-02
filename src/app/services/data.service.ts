@@ -6,7 +6,7 @@ import {TranslocoService} from "@jsverse/transloco";
 import {ToolItem} from "../types/tool-item";
 import {SortedItems} from "../types/sorted-items";
 
-type ObjectWithStringKey<TObject, TKey extends keyof TObject> = TObject[TKey] extends string | null ? TObject : never;
+type ObjectWithMappableKey<TObject, TKey extends keyof TObject> = TObject[TKey] extends string | null ? TObject : never;
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +30,7 @@ export class DataService {
     );
   }
 
-  private formatToMapped<TObject, TKey extends keyof TObject>(objects: ObjectWithStringKey<TObject, TKey>[], key: TKey): SortedItems<TObject> {
+  private formatToMapped<TObject, TKey extends keyof TObject>(objects: ObjectWithMappableKey<TObject, TKey>[], key: TKey): SortedItems<TObject> {
     const result: SortedItems<TObject> = new Map<string, TObject[]>();
     for (const object of objects) {
       object[key] ??= '' as any;
