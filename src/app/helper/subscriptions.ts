@@ -1,13 +1,13 @@
-import {Subscription} from "rxjs";
+import {Unsubscribable} from "../types/unsubscribable";
 
 export class Subscriptions {
-  private subscriptions: Subscription[];
+  private subscriptions: Unsubscribable[];
 
-  constructor(...subscriptions: Subscription[]) {
+  constructor(...subscriptions: Unsubscribable[]) {
     this.subscriptions = subscriptions;
   }
 
-  public add(subscription: Subscription): void {
+  public add(subscription: Unsubscribable): void {
     this.subscriptions.push(subscription);
   }
 

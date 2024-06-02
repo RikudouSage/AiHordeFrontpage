@@ -8,6 +8,7 @@ import {KeyValuePipe, NgOptimizedImage} from "@angular/common";
 import {TranslocoMarkupComponent} from "ngx-transloco-markup";
 import {InlineSvgComponent} from "../../components/inline-svg/inline-svg.component";
 import {TranslatorService} from "../../services/translator.service";
+import {FooterColorService} from "../../services/footer-color.service";
 
 @Component({
   selector: 'app-faq',
@@ -36,11 +37,13 @@ export class FaqComponent implements OnInit {
     private readonly title: Title,
     private readonly translator: TranslatorService,
     private readonly faqService: FaqService,
+    private readonly footerColor: FooterColorService,
   ) {
   }
 
   public async ngOnInit(): Promise<void> {
     this.title.setTitle(await toPromise(this.translator.get('frequently_asked_questions')) + ' | ' + await toPromise(this.translator.get('app_title')));
     this.faq.set(await toPromise(this.faqService.faq));
+    this.footerColor.dark.set(true);
   }
 }
