@@ -8,6 +8,8 @@ import {FooterColorService} from "../../services/footer-color.service";
 import {KeyValuePipe} from "@angular/common";
 import {NoSorterKeyValue} from "../../types/no-sorter-key-value";
 import {ReplacePipe} from "../../pipes/replace.pipe";
+import {TranslatorService} from "../../services/translator.service";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-privacy',
@@ -27,11 +29,14 @@ export class PrivacyComponent implements OnInit {
   constructor(
     private readonly dataService: DataService,
     private readonly footerColor: FooterColorService,
+    private readonly translator: TranslatorService,
+    private readonly titleService: Title,
   ) {
   }
 
   public async ngOnInit(): Promise<void> {
     this.footerColor.dark.set(true);
+    this.titleService.setTitle(await toPromise(this.translator.get('privacy_policy')));
   }
 
   protected readonly NoSorterKeyValue = NoSorterKeyValue;
