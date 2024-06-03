@@ -13,4 +13,20 @@ export const routes: Routes = [
     path: 'news',
     loadComponent: () => import('./pages/news/news.component').then(c => c.NewsComponent),
   },
+  {
+    path: 'register',
+    loadComponent: () => import('./pages/register/register.component').then(c => c.RegisterComponent),
+  },
+  {
+    path: 'sponsors',
+    loadComponent: () => import('./pages/sponsors/sponsors.component').then(c => c.SponsorsComponent),
+  },
+  {
+    path: 'privacy',
+    loadComponent: () => import('./pages/privacy/privacy.component').then(c => c.PrivacyComponent),
+  },
+  {
+    path: 'terms',
+    loadComponent: () => import('./pages/terms/terms.component').then(c => c.TermsComponent),
+  },
 ];
