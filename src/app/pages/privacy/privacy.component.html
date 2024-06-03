@@ -13,7 +13,9 @@
               }
               @for (item of subsectionPair.value; track item.text) {
                 <div class="mb-3 tracking-tight underline-links" [innerHTML]="
-                  item.text | replace:'{li}':'&nbsp;&nbsp;&#9679;&nbsp;'
+                  item.text
+                    | replace:'{li}':'&nbsp;&nbsp;&#9679;&nbsp;'
+                    | replace:'{2li}':'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9679;&nbsp;'
                 "></div>
               }
             }
