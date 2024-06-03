@@ -28,5 +28,83 @@
     "description": "Generate images directly via Reddit by tagging the bot.",
     "link": "https://github.com/Haidra-Org/reddit-stable-horde-generate",
     "category": "Official tools"
+  },
+  {
+    "name": "Python SDK",
+    "description": "Python bindings for AI Horde",
+    "link": "https://github.com/Haidra-Org/horde-sdk",
+    "category": "Official tools"
+  },
+  {
+    "name": "CraiyonArt Bot",
+    "description": "A Telegram bot that generates images using AI Horde",
+    "link": "https://t.me/CraiyonArtBot",
+    "category": "Community Bots"
+  },
+  {
+    "name": "WriterBot",
+    "description": "A Discord bot that generates images using AI Horde",
+    "link": "https://harrisonvanderbyl.github.io/WriterBot/",
+    "category": "Community Bots"
+  },
+  {
+    "name": "Turing Bot",
+    "description": "A Discord bot that generates images using AI Horde",
+    "link": "https://github.com/MrlolDev/turing-bot",
+    "category": "Community Bots"
+  },
+  {
+    "name": "Imaginarium",
+    "description": "Telegram AI Art Generator bot Powered by AI Horde.",
+    "link": "https://t.me/ImaginariumAIbot",
+    "category": "Community Bots"
+  },
+  {
+    "name": "GIMP plugin",
+    "description": "A plugin for using AI Horde inside the GIMP image editor.",
+    "link": "https://github.com/blueturtleai/gimp-stable-diffusion/tree/main/stablehorde",
+    "category": "Community plugins"
+  },
+  {
+    "name": "Krita plugin",
+    "description": "A plugin for using AI Horde inside the Krita image editor.",
+    "link": "https://github.com/dunkeroni/krita-stable-horde",
+    "category": "Community plugins"
+  },
+  {
+    "name": "Unreal Engine plugin",
+    "description": "Plugin that generates AI synthesized images in Unreal Editor using AI Horde.",
+    "link": "https://github.com/Mystfit/Unreal-StableDiffusionTools",
+    "category": "Community plugins"
+  },
+  {
+    "name": "Automatic1111 plugin",
+    "description": "A plugin for using AI Horde inside the popular Automatic1111 frontend.",
+    "link": "https://github.com/natanjunges/stable-diffusion-webui-stable-horde",
+    "category": "Community plugins"
+  },
+  {
+    "name": "Blender plugin",
+    "description": "Render an AI generated image based on a text prompt and your scene in Blender.",
+    "link": "https://github.com/benrugg/AI-Render",
+    "category": "Community plugins"
+  },
+  {
+    "name": "Photoshop plugin",
+    "description": "Use the capabilities of AI Horde in Photoshop without switching between programs",
+    "link": "https://github.com/grizbil/Auto-Photoshop-StableDiffusion-Plugin",
+    "category": "Community plugins"
+  },
+  {
+    "name": "Chrome accessibility",
+    "description": "Generates descriptive alternate text of images online for those who need them!",
+    "link": "https://chrome.google.com/webstore/detail/genalt-generated-alt-text/ekbmkapnmnhhgfmjdnchgmcfggibebnn",
+    "category": "Community plugins"
+  },
+  {
+    "name": "Node.js SDK",
+    "description": "Communicate with AI Horde api from node.js projects",
+    "link": "https://www.npmjs.com/package/@zeldafan0225/ai_horde",
+    "category": "Community SDKs"
   }
 ]
