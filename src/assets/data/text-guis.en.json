@@ -1,0 +1,40 @@
+[
+  {
+    "name": "KoboldAI Client",
+    "description": "This is a browser-based front-end for AI-assisted writing with multiple local & remote AI models, including through the AI Horde.",
+    "image": "/assets/img/guis/koboldai.png",
+    "link": "https://koboldai.org/",
+    "downloadButtonText": "Get {name}",
+    "categories": "Desktop"
+  },
+  {
+    "name": "SillyTavern",
+    "description": "A downloadable client that allows you to interact with text generation AIs, including the AI Horde.",
+    "image": "/assets/img/guis/sillytavern.png",
+    "link": "https://sillytavernai.com/",
+    "downloadButtonText": "Get {name}",
+    "categories": "Desktop"
+  },
+  {
+    "name": "KoboldAI Lite",
+    "description": "A simple web-based client for AI chat and roleplay with multiple AI models, including through the AI Horde.",
+    "image": "/assets/img/guis/koboldai-lite.png",
+    "link": "https://lite.koboldai.net",
+    "categories": "Web"
+  },
+  {
+    "name": "AgnAIstic",
+    "description": "AI chat with characters. Open source, self-hostable, and publicly hosted, including through the AI Horde.",
+    "image": "/assets/img/guis/agnaistic.png",
+    "link": "https://agnai.chat",
+    "categories": "Web"
+  },
+  {
+    "name": "Inneal",
+    "description": "An iOS app for LLM chat through the AI Horde. Has support for multi-character chat, personas and more.",
+    "image": "/assets/img/guis/inneal.png",
+    "link": "https://github.com/amiantos/inneal",
+    "downloadButtonText": "Get {name}",
+    "categories": "iOS"
+  }
+]

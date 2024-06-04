@@ -6,8 +6,10 @@ import {TranslocoService} from "@jsverse/transloco";
 import {ToolItem} from "../types/tool-item";
 import {SortedItems} from "../types/sorted-items";
 import {PrivacyPolicyItem} from "../types/privacy-policy-item";
+import {GuiItem} from "../types/gui-item";
+import {replaceContext} from "../helper/context-replacer";
 
-type ObjectWithMappableKey<TObject, TKey extends keyof TObject> = TObject[TKey] extends string | null ? TObject : never;
+type ObjectWithMappableKey<TObject, TKey extends keyof TObject> = TObject[TKey] extends string | null | string[] ? TObject : never;
 
 @Injectable({
   providedIn: 'root'
@@ -31,12 +33,27 @@ export class DataService {
     );
   }
 
+  public get imageGuis(): Observable<SortedItems<GuiItem>> {
+    return this.getData<GuiItem>('image-guis').pipe(
+      map(items => items.map(item => replaceContext(item, ['description', 'downloadButtonText']))),
+      map (items => this.formatToMapped(items, 'categories')),
+    );
+  }
+
+  public get textGuis(): Observable<SortedItems<GuiItem>> {
+    return this.getData<GuiItem>('text-guis').pipe(
+      map(items => items.map(item => replaceContext(item, ['description', 'downloadButtonText']))),
+      map (items => this.formatToMapped(items, 'categories')),
+    );
+  }
+
   public get privacyPolicy(): Observable<Map<string, Map<string, PrivacyPolicyItem[]>>> {
     return this.getData<PrivacyPolicyItem>('privacy').pipe(
       map (items => {
         const sorted = this.formatToMapped(items, 'section');
         const result: Map<string, Map<string, PrivacyPolicyItem[]>> = new Map<string, Map<string, PrivacyPolicyItem[]>>();
 
+        // todo move to context replacer function
         sorted.forEach((value, key) => {
           const subSorted = this.formatToMapped(
             value.map(item => {
@@ -74,9 +91,18 @@ export class DataService {
   private formatToMapped<TObject, TKey extends keyof TObject>(objects: ObjectWithMappableKey<TObject, TKey>[], key: TKey): SortedItems<TObject> {
     const result: SortedItems<TObject> = new Map<string, TObject[]>();
     for (const object of objects) {
-      object[key] ??= '' as any;
-      result.has(object[key] as string) || result.set(object[key] as string, []);
-      result.get(object[key] as string)!.push(object);
+      let targetSortingValues = object[key] as string | string[] | null;
+      if (targetSortingValues === null) {
+        targetSortingValues = [''];
+      }
+      if (!Array.isArray(targetSortingValues)) {
+        targetSortingValues = [targetSortingValues];
+      }
+
+      for (const targetSortingValue of targetSortingValues) {
+        result.has(targetSortingValue) || result.set(targetSortingValue, []);
+        result.get(targetSortingValue)!.push(object);
+      }
     }
 
     return result;
