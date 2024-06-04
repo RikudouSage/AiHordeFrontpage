@@ -24,6 +24,7 @@ import {Title} from "@angular/platform-browser";
   styleUrl: './privacy.component.scss'
 })
 export class PrivacyComponent implements OnInit {
+  protected readonly NoSorterKeyValue = NoSorterKeyValue;
   public policyItems = toSignal(this.dataService.privacyPolicy);
 
   constructor(
@@ -38,6 +39,4 @@ export class PrivacyComponent implements OnInit {
     this.footerColor.dark.set(true);
     this.titleService.setTitle(await toPromise(this.translator.get('privacy_policy')));
   }
-
-  protected readonly NoSorterKeyValue = NoSorterKeyValue;
 }
