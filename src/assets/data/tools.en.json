@@ -1,5 +1,11 @@
 [
   {
+    "name": "Horde Worker reGen",
+    "description": "The official way to add your GPU to the horde for image generation.",
+    "link": "https://github.com/Haidra-Org/horde-worker-reGen",
+    "category": "Official tools"
+  },
+  {
     "name": "AI Horde CLI",
     "description": "The official AI Horde CLI that supports all features of AI Horde.",
     "link": "https://github.com/Haidra-Org/AI-Horde-CLI",
