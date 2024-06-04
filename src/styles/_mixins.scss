@@ -2,6 +2,10 @@
   margin-top: 0.25rem * $amount;
 }
 
+@mixin pt($amount) {
+  padding-top: 0.25rem * $amount;
+}
+
 @mixin spaceY($amount) {
   $num: 0.25rem * $amount;
   --tw-space-y-reverse: 0;

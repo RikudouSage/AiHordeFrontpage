@@ -1,0 +1,9 @@
+@import "breakpoints";
+
+@media screen and (min-width: $lg) {
+  .lg {
+    &\:pt-0 {
+      padding-top: 0;
+    }
+  }
+}

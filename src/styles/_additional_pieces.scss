@@ -12,6 +12,10 @@
   }
 }
 
+.pt-12 {
+  @include pt(12);
+}
+
 .mt-8 {
   @include mt(8);
 
@@ -27,3 +31,7 @@
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {
   @include spaceY(2);
 }
+
+
+@import "md";
+@import "lg";
