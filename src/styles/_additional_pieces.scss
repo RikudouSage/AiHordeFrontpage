@@ -2,6 +2,26 @@
 
 .mt-12 {
   @include mt(12);
+
+  &\:not-first {
+    @include mt(12);
+
+    &:first-of-type {
+      margin-top: revert;
+    }
+  }
+}
+
+.mt-8 {
+  @include mt(8);
+
+  &\:not-first {
+    @include mt(8);
+
+    &:first-of-type {
+      margin-top: revert;
+    }
+  }
 }
 
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {
