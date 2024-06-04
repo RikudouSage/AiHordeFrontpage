@@ -6,6 +6,10 @@
   padding-top: 0.25rem * $amount;
 }
 
+@mixin gap($amount) {
+  gap: 0.25rem * $amount;
+}
+
 @mixin spaceY($amount) {
   $num: 0.25rem * $amount;
   --tw-space-y-reverse: 0;

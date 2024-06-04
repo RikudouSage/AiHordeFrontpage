@@ -1,9 +1,14 @@
 @import "breakpoints";
+@import "mixins";
 
 @media screen and (min-width: $md) {
   .md {
     &\:mt-0 {
       margin-top: 0;
+    }
+
+    &\:gap-8 {
+      @include gap(8);
     }
   }
 }
