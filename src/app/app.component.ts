@@ -16,6 +16,7 @@ import {FooterColorService} from "./services/footer-color.service";
 export class AppComponent implements OnInit {
   public darkMode = signal(false);
   public darkFooter = this.footerColor.dark;
+  public showMobileMenu = false;
 
   constructor(
     private readonly footerColor: FooterColorService,
@@ -24,5 +25,13 @@ export class AppComponent implements OnInit {
 
   public ngOnInit(): void {
     this.darkMode.set(typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  }
+
+  public toggleMobileMenu(): void {
+    this.showMobileMenu = !this.showMobileMenu;
+  }
+
+  public closeMobileMenu(): void {
+    this.showMobileMenu = false;
   }
 }

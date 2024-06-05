@@ -1,4 +1,4 @@
-<div class="wrapper" [class.dark]="darkMode()">
+<div class="wrapper" [class.dark]="darkMode()" (click)="closeMobileMenu()">
   <header class="fixed w-full">
     <nav class="bg-white border-gray-200 py-2.5 dark:bg-gray-900">
       <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
@@ -9,25 +9,27 @@
         <div class="flex items-end lg:order-2">
           <button data-collapse-toggle="mobile-menu-2" type="button"
                   class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                  aria-controls="mobile-menu-2" aria-expanded="false">
+                  aria-controls="mobile-menu-2" aria-expanded="false"
+                  (click)="toggleMobileMenu(); $event.stopPropagation()"
+                  >
             <span class="sr-only">{{'open_main_menu' | transloco}}</span>
             <inline-svg href="assets/img/open-menu.svg" />
             <inline-svg href="assets/img/close-menu.svg" />
           </button>
         </div>
-        <div class="items-end justify-between hidden w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
+        <div class="items-end justify-between hidden w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2" [class.hidden]="!showMobileMenu" (click)="$event.stopPropagation()">
           <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
             <li>
-              <a routerLink="/" class="block py-2 pl-3 pr-4 text-white bg-purple-700 rounded lg:bg-transparent lg:text-purple-700 lg:p-0 dark:text-white" aria-current="page">{{'home' | transloco}}</a>
+              <a routerLink="/" class="block py-2 pl-3 pr-4 text-gray-500 bg-gray-100 rounded lg:bg-transparent lg:text-gray-500 lg:p-0 dark:text-white" aria-current="page">{{'home' | transloco}}</a>
             </li>
             <li>
-              <a routerLink="/register" class="block py-2 pl-3 pr-4 text-white bg-purple-700 rounded lg:bg-transparent lg:text-purple-700 lg:p-0 dark:text-white" aria-current="page">{{'register_account' | transloco}}</a>
+              <a routerLink="/register" class="block py-2 pl-3 pr-4 text-gray-500 bg-gray-100 rounded lg:bg-transparent lg:text-gray-500 lg:p-0 dark:text-white" aria-current="page">{{'register_account' | transloco}}</a>
             </li>
             <li>
-              <a routerLink="/news" class="block py-2 pl-3 pr-4 text-white bg-purple-700 rounded lg:bg-transparent lg:text-purple-700 lg:p-0 dark:text-white" aria-current="page">{{'news' | transloco}}</a>
+              <a routerLink="/news" class="block py-2 pl-3 pr-4 text-gray-500 bg-gray-100 rounded lg:bg-transparent lg:text-gray-500 lg:p-0 dark:text-white" aria-current="page">{{'news' | transloco}}</a>
             </li>
             <li>
-              <a routerLink="/faq" class="block py-2 pl-3 pr-4 text-white bg-purple-700 rounded lg:bg-transparent lg:text-purple-700 lg:p-0 dark:text-white" aria-current="page">{{'faq' | transloco}}</a>
+              <a routerLink="/faq" class="block py-2 pl-3 pr-4 text-gray-500 bg-gray-100 rounded lg:bg-transparent lg:text-gray-500 lg:p-0 dark:text-white" aria-current="page">{{'faq' | transloco}}</a>
             </li>
           </ul>
         </div>
@@ -91,7 +93,7 @@
           <h3 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">{{'documentation' | transloco}}</h3>
           <ul class="text-gray-500 dark:text-gray-400">
             <li class="mb-4">
-              <a href="https://aihorde.net/api" class=" hover:underline" target="_blank">{{'rest_api' | transloco}}</a>
+              <a href="https://aihorde.net/api/" class=" hover:underline" target="_blank">{{'rest_api' | transloco}}</a>
             </li>
             <li class="mb-4">
               <a href="https://github.com/Haidra-Org/AI-Horde/blob/main/README_StableHorde.md#joining-the-horde" class="hover:underline" target="_blank">{{'join_horde' | transloco}}</a>
