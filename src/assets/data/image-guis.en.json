@@ -2,7 +2,7 @@
   {
     "name": "Lucid Creations",
     "description": "A client that works both in your browser and can be downloaded by the founder of the AI Horde project.",
-    "image": "/assets/img/guis/lucid-creations.png",
+    "image": "assets/img/guis/lucid-creations.png",
     "link": "https://dbzer0.itch.io/lucid-creations",
     "downloadButtonText": "Get {name}",
     "categories": ["Desktop", "Web"]
@@ -10,28 +10,28 @@
   {
     "name": "Artbot",
     "description": "One of the most popular web-based clients.",
-    "image": "/assets/img/guis/artbot.png",
+    "image": "assets/img/guis/artbot.png",
     "link": "https://tinybots.net/artbot",
     "categories": "Web"
   },
   {
     "name": "HordeNG",
     "description": "HordeNG aims to be very simple to use for beginners, while allowing the full set of options for advanced users.",
-    "image": "/assets/img/guis/horde-ng.png",
+    "image": "assets/img/guis/horde-ng.png",
     "link": "https://horde-ng.org/generate",
     "categories": "Web"
   },
   {
     "name": "AI Scribbles",
     "description": "A simplified web image generator with handmade custom styles",
-    "image": "/assets/img/guis/ai-scribbles.png",
+    "image": "assets/img/guis/ai-scribbles.png",
     "link": "https://www.aiscribbles.com/generate/",
     "categories": "Web"
   },
   {
     "name": "AI Painter",
     "description": "A Chinese language app which has both a simple mode and advanced features.",
-    "image": "/assets/img/guis/ai-painter.jpg",
+    "image": "assets/img/guis/ai-painter.jpg",
     "link": "https://play.google.com/store/apps/details?id=wkygame.ai.all.in.one",
     "downloadButtonText": "Get {name}",
     "categories": "Android"
@@ -39,7 +39,7 @@
   {
     "name": "HordeNG",
     "description": "HordeNG aims to be very simple to use for beginners, while allowing the full set of options for advanced users.",
-    "image": "/assets/img/guis/horde-ng-android.jpg",
+    "image": "assets/img/guis/horde-ng-android.jpg",
     "link": "https://play.google.com/store/apps/details?id=org.horde_ng.twa",
     "downloadButtonText": "Get {name}",
     "categories": "Android"
@@ -47,7 +47,7 @@
   {
     "name": "AI Painter",
     "description": "A Chinese language app which has both a simple mode and advanced features.",
-    "image": "/assets/img/guis/ai-painter.jpg",
+    "image": "assets/img/guis/ai-painter.jpg",
     "link": "https://apps.apple.com/hk/app/%E6%A9%9F%E7%95%AB%E5%B8%AB-%E5%B0%88%E6%A5%AD%E7%9A%84ai%E7%B9%AA%E7%95%ABapp/id1644645946",
     "downloadButtonText": "Get {name}",
     "categories": "iOS"
@@ -55,7 +55,7 @@
   {
     "name": "Aislingeach",
     "description": "A iOS and Android app that allows you to generate images using AI, as well as rate images.",
-    "image": "/assets/img/guis/aislingeach.png",
+    "image": "assets/img/guis/aislingeach.png",
     "link": "https://github.com/amiantos/aislingeach",
     "downloadButtonText": "Get {name}",
     "categories": "iOS"

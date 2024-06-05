@@ -32,7 +32,7 @@
                   (click)="selectedFaq.set(selectedFaq() === faqItem.question ? null : faqItem.question)"
                 >
                   <span>{{faqItem.question}}</span>
-                  <inline-svg href="/assets/img/faq-closed.svg" [class.rotate-180]="selectedFaq() === faqItem.question" />
+                  <inline-svg href="assets/img/faq-closed.svg" [class.rotate-180]="selectedFaq() === faqItem.question" />
                 </button>
               </h3>
               <div [class.hidden]="selectedFaq() !== faqItem.question">
