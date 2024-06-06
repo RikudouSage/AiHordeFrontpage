@@ -1,4 +1,4 @@
-import {Component, Inject, OnDestroy, OnInit, PLATFORM_ID, signal} from '@angular/core';
+import {Component, Inject, NgZone, OnDestroy, OnInit, PLATFORM_ID, signal} from '@angular/core';
 import {CutPipe} from "../../../../pipes/cut.pipe";
 import {FormatNumberPipe} from "../../../../pipes/format-number.pipe";
 import {InlineSvgComponent} from "../../../../components/inline-svg/inline-svg.component";
@@ -12,7 +12,7 @@ import {SingleImageStatPoint} from "../../../../types/single-image-stat-point";
 import {SingleTextStatPoint} from "../../../../types/single-text-stat-point";
 import {AiHordeService} from "../../../../services/ai-horde.service";
 import {toPromise} from "../../../../types/resolvable";
-import {combineLatestWith, interval, startWith} from "rxjs";
+import {interval} from "rxjs";
 import {Subscriptions} from "../../../../helper/subscriptions";
 import {SingleInterrogationStatPoint} from "../../../../types/single-interrogation-stat-point";
 
@@ -44,6 +44,7 @@ export class HomepageStatsComponent implements OnInit, OnDestroy {
   constructor(
     private readonly aiHorde: AiHordeService,
     @Inject(PLATFORM_ID) platformId: string,
+    private readonly zone: NgZone,
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
@@ -52,22 +53,26 @@ export class HomepageStatsComponent implements OnInit, OnDestroy {
     this.subscriptions.unsubscribe();
   }
 
-  public ngOnInit(): void {
-    if (this.isBrowser) {
-      this.subscriptions.add(interval(60_000).pipe(
-        startWith(0),
-        combineLatestWith(this.aiHorde.performance, this.aiHorde.imageStats, this.aiHorde.textStats, this.aiHorde.interrogationStats)
-      ).subscribe(value => {
-        this.stats.set(value[1]);
-        this.imageStats.set(value[2].total);
-        this.textStats.set(value[3].total);
-        this.interrogationStats.set(value[4]);
+  public async ngOnInit(): Promise<void> {
+    await this.updateStats();
+
+    this.zone.runOutsideAngular(() => {
+      this.subscriptions.add(interval(60_000).subscribe(async () => {
+        await this.updateStats();
       }));
-    } else {
-      toPromise(this.aiHorde.performance).then(value => this.stats.set(value));
-      toPromise(this.aiHorde.imageStats).then(value => this.imageStats.set(value.total));
-      toPromise(this.aiHorde.textStats).then(value => this.textStats.set(value.total));
-      toPromise(this.aiHorde.interrogationStats).then(value => this.interrogationStats.set(value));
-    }
+    });
+  }
+
+  private async updateStats(): Promise<void> {
+    const responses = await Promise.all([
+      toPromise(this.aiHorde.performance),
+      toPromise(this.aiHorde.imageStats),
+      toPromise(this.aiHorde.textStats),
+      toPromise(this.aiHorde.interrogationStats),
+    ]);
+    this.stats.set(responses[0]);
+    this.imageStats.set(responses[1].total);
+    this.textStats.set(responses[2].total);
+    this.interrogationStats.set(responses[3]);
   }
 }
