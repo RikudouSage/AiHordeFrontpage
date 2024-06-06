@@ -10,7 +10,7 @@
         @for (newsItem of news(); track newsItem.title) {
           <div class="mb-6">
             <h3 class="mb-3 text-2xl text-gray-900 dark:text-white">
-              <span>{{newsItem.date_published}}</span> - <span [innerHTML]="newsItem.title"></span>
+              <span class="text-gray-500 dark:text-gray-200">{{newsItem.date_published}}</span> - <span [innerHTML]="newsItem.title"></span>
             </h3>
             @if (newsItem.excerpt) {
               <p class="mb-2 font-light lg:text-xl" [innerHTML]="newsItem.excerpt"></p>
