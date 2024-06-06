@@ -48,9 +48,19 @@ export class AiHordeService {
     });
   }
 
-  public getNews(count: number): Observable<NewsItem[]> {
-    return this.httpClient.get<NewsItem[]>('/assets/data/news.json').pipe(
-      map(items => items.slice(0, count)),
+  public getNews(count?: number): Observable<NewsItem[]> {
+    return this.httpClient.get<any[]>('https://aihorde.net/api/v2/status/news').pipe(
+      map(newsItems => count ? newsItems.slice(0, count) : newsItems),
+      map(newsItems => newsItems.map(newsItem => {
+        const markdownLinkRegex = /\[([^\[]+)\]\(([^\)]+)\)/g;
+        const excerpt = newsItem.newspiece.replace(markdownLinkRegex, '<a href="$2">$1</a>');
+        return {
+          title: newsItem.title,
+          date_published: newsItem.date_published,
+          excerpt: excerpt,
+          moreLink: newsItem.more_info_urls.length > 0 ? newsItem.more_info_urls[0] : null
+        };
+      }))
     );
   }
 }
