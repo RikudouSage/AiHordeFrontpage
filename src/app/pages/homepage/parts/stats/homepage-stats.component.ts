@@ -12,7 +12,7 @@ import {SingleImageStatPoint} from "../../../../types/single-image-stat-point";
 import {SingleTextStatPoint} from "../../../../types/single-text-stat-point";
 import {AiHordeService} from "../../../../services/ai-horde.service";
 import {toPromise} from "../../../../types/resolvable";
-import {interval} from "rxjs";
+import {interval, startWith} from "rxjs";
 import {Subscriptions} from "../../../../helper/subscriptions";
 import {SingleInterrogationStatPoint} from "../../../../types/single-interrogation-stat-point";
 
@@ -57,8 +57,10 @@ export class HomepageStatsComponent implements OnInit, OnDestroy {
     await this.updateStats();
 
     this.zone.runOutsideAngular(() => {
-      this.subscriptions.add(interval(60_000).subscribe(async () => {
-        await this.updateStats();
+      this.subscriptions.add(interval(60_000).pipe(
+        startWith(0),
+      ).subscribe(async () => {
+        await this.zone.run(async () => await this.updateStats());
       }));
     });
   }
