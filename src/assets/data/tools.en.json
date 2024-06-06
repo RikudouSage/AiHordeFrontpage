@@ -24,9 +24,9 @@
     "category": "Official tools"
   },
   {
-    "name": "Mastodon bots",
+    "name": "Fediverse bots",
     "description": "Generate images via ActivityPub just by pinging the bots.",
-    "link": "https://github.com/Haidra-Org/mastodon-ai-horde-generate",
+    "link": "https://github.com/Haidra-Org/fediverse-ai-horde-generate",
     "category": "Official tools"
   },
   {
