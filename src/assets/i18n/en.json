@@ -54,7 +54,7 @@
   "image_alchemy": "Image alchemy",
   "realtime_stats": "Realtime stats",
   "quickstart": "Quickstart",
-  "quickstart.register_account": "First [link:registerLink]register an account[/link] which will generate for you an API key. Store that key somewhere.",
+  "quickstart.register_account": "First <a href='/register'>register an account</a> which will generate for you an API key. Store that key somewhere.",
   "quickstart.anonymous_api_key": "if you do not want to register, you can use [b]'0000000000'[/b] as an api key to connect anonymously. However anonymous accounts have the lowest priority when there's too many concurrent requests!",
   "quickstart.explanation_api_key": "To increase your priority you will need a unique API key and then to increase your Kudos. [link:kudosExplanationLink]Read how Kudos are working[/link].",
   "guis.image": "Image GUIs",

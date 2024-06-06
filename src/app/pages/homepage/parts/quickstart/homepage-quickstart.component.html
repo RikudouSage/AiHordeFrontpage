@@ -6,8 +6,8 @@
           <transloco key="quickstart" />
         </h2>
 
-        <p class="mb-4">
-          <transloco key="quickstart.register_account" [params]="{registerLink: {route: '/register'}}" />
+        <p class="mb-4" [innerHTML]="'quickstart.register_account' | transloco" >
+          
         </p>
         <ul class="mb-2 space-y-2">
           <li class="flex space-x-3">
