@@ -6,18 +6,18 @@
           <transloco key="quickstart" />
         </h2>
 
-        <p class="mb-4">
-          <transloco key="quickstart.register_account" [params]="{registerLink: {route: '/register'}}" />
+        <p class="mb-4" [innerHTML]="'quickstart.register_account' | transloco" >
+          
         </p>
         <ul class="mb-2 space-y-2">
           <li class="flex space-x-3">
-            <inline-svg href="/assets/img/li-checkbox.svg" />
+            <inline-svg href="assets/img/li-checkbox.svg" />
             <span class="text-base">
               <transloco key="quickstart.anonymous_api_key" />
             </span>
           </li>
           <li class="flex space-x-3">
-            <inline-svg href="/assets/img/li-checkbox.svg" />
+            <inline-svg href="assets/img/li-checkbox.svg" />
             <span class="text-base">
               <transloco key="quickstart.explanation_api_key" [params]="{kudosExplanationLink: 'https://dbzer0.com/blog/the-kudos-based-economy-for-the-koboldai-horde/'}" />
             </span>

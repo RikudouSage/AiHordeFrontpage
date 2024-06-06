@@ -52,7 +52,7 @@ export class HomepageStatsComponent implements OnInit, OnDestroy {
     this.subscriptions.unsubscribe();
   }
 
-  public async ngOnInit(): Promise<void> {
+  public ngOnInit(): void {
     if (this.isBrowser) {
       this.subscriptions.add(interval(60_000).pipe(
         startWith(0),
@@ -64,10 +64,10 @@ export class HomepageStatsComponent implements OnInit, OnDestroy {
         this.interrogationStats.set(value[4]);
       }));
     } else {
-      this.stats.set(await toPromise(this.aiHorde.performance));
-      this.imageStats.set((await toPromise(this.aiHorde.imageStats)).total);
-      this.textStats.set((await toPromise(this.aiHorde.textStats)).total);
-      this.interrogationStats.set(await toPromise(this.aiHorde.interrogationStats));
+      toPromise(this.aiHorde.performance).then(value => this.stats.set(value));
+      toPromise(this.aiHorde.imageStats).then(value => this.imageStats.set(value.total));
+      toPromise(this.aiHorde.textStats).then(value => this.textStats.set(value.total));
+      toPromise(this.aiHorde.interrogationStats).then(value => this.interrogationStats.set(value));
     }
   }
 }

@@ -6,13 +6,14 @@ import {RouterLink} from "@angular/router";
 import {TranslocoMarkupComponent} from "ngx-transloco-markup";
 import {TranslocoPipe} from "@jsverse/transloco";
 
+
 @Component({
   selector: 'app-homepage-latest-news',
   standalone: true,
   imports: [
     RouterLink,
     TranslocoMarkupComponent,
-    TranslocoPipe
+    TranslocoPipe,
   ],
   templateUrl: './homepage-latest-news.component.html',
   styleUrl: './homepage-latest-news.component.scss'

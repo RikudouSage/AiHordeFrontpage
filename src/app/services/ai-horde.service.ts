@@ -17,25 +17,25 @@ export class AiHordeService {
   }
 
   public get imageStats(): Observable<ImageTotalStats> {
-    return of({
-      month: { images: 105150339, ps: 1553239485353984 },
-      total: { images: 105150339, ps: 1553239485353984 },
-      day: { images: 105150339, ps: 1553239485353984 },
-      hour: { images: 105150339, ps: 1553239485353984 },
-      minute: { images: 105150339, ps: 1553239485353984 },
-    });
-    // return this.httpClient.get<TotalStats>('https://aihorde.net/api/v2/stats/img/totals');
+    // return of({
+    //   month: { images: 105150339, ps: 1553239485353984 },
+    //   total: { images: 105150339, ps: 1553239485353984 },
+    //   day: { images: 105150339, ps: 1553239485353984 },
+    //   hour: { images: 105150339, ps: 1553239485353984 },
+    //   minute: { images: 105150339, ps: 1553239485353984 },
+    // });
+    return this.httpClient.get<ImageTotalStats>('https://aihorde.net/api/v2/stats/img/totals');
   }
 
   public get textStats(): Observable<TextTotalStats> {
-    return of({
-      total: { requests: 111931745, tokens: 20444501084 },
-      day: { requests: 111931745, tokens: 20444501084 },
-      hour: { requests: 111931745, tokens: 20444501084 },
-      minute: { requests: 111931745, tokens: 20444501084 },
-      month: { requests: 111931745, tokens: 20444501084 },
-    });
-    // return this.httpClient.get<TextTotalStats>('https://aihorde.net/api/v2/stats/text/totals');
+    // return of({
+    //   total: { requests: 111931745, tokens: 20444501084 },
+    //   day: { requests: 111931745, tokens: 20444501084 },
+    //   hour: { requests: 111931745, tokens: 20444501084 },
+    //   minute: { requests: 111931745, tokens: 20444501084 },
+    //   month: { requests: 111931745, tokens: 20444501084 },
+    // });
+    return this.httpClient.get<TextTotalStats>('https://aihorde.net/api/v2/stats/text/totals');
   }
 
   public get performance(): Observable<HordePerformance> {
@@ -48,9 +48,26 @@ export class AiHordeService {
     });
   }
 
-  public getNews(count: number): Observable<NewsItem[]> {
-    return this.httpClient.get<NewsItem[]>('/assets/data/news.json').pipe(
-      map(items => items.slice(0, count)),
+  // The endpoint `https://aihorde.net/api/v2/documents/terms?format=html` returns the terms and conditions with a field "html" containing the HTML content.
+  public getTerms(): Observable<string> {
+    return this.httpClient.get<any>('https://aihorde.net/api/v2/documents/terms?format=html').pipe(
+      map(response => response.html)
+    );
+  }
+
+  public getNews(count?: number): Observable<NewsItem[]> {
+    return this.httpClient.get<any[]>('https://aihorde.net/api/v2/status/news').pipe(
+      map(newsItems => count ? newsItems.slice(0, count) : newsItems),
+      map(newsItems => newsItems.map(newsItem => {
+        const markdownLinkRegex = /\[([^\[]+)\]\(([^\)]+)\)/g;
+        const excerpt = newsItem.newspiece.replace(markdownLinkRegex, '<a href="$2">$1</a>');
+        return {
+          title: newsItem.title,
+          date_published: newsItem.date_published,
+          excerpt: excerpt,
+          moreLink: newsItem.more_info_urls.length > 0 ? newsItem.more_info_urls[0] : null
+        };
+      }))
     );
   }
 }

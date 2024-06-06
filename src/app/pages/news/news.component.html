@@ -1,1 +1,35 @@
-<p>news works!</p>
+<section class="bg-white dark:bg-gray-900">
+  <div class="grid max-w-screen-xl px-4 pt-20 pb-8 mx-auto lg:gap-8 xl:gap-0 ">
+    <div class="mr-auto place-self-center lg:col-span-7">
+      <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white">
+        <transloco key="latest_news" />
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section class="bg-gray-50 dark:bg-gray-800">
+  <div class="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:px-6">
+    <div class="items-center gap-8 lg:grid xl:gap-16">
+      <div class="text-gray-500 sm:text-lg dark:text-gray-400">
+        @for (newsItem of news(); track newsItem.title) {
+          <div class="mb-6">
+            <h3 class="mb-3 text-2xl text-gray-900 dark:text-white">
+              <span class="text-gray-500 dark:text-gray-200">{{newsItem.date_published}}</span> - <span [innerHTML]="newsItem.title"></span>
+            </h3>
+            @if (newsItem.excerpt) {
+              <p class="mb-2 font-light lg:text-xl" [innerHTML]="newsItem.excerpt"></p>
+            }
+            @if (newsItem.moreLink) {
+              <p class="mb-2 font-light lg:text-xl">
+                <a [href]="newsItem.moreLink" target="_blank">{{'read_more' | transloco}}</a>
+              </p>
+            }
+          </div>
+        } @empty {
+          <p class="mb-2 font-light lg:text-xl">{{'no_news' | transloco}}</p>
+        }
+      </div>
+    </div>
+  </div>
+</section>
