@@ -48,6 +48,13 @@ export class AiHordeService {
     });
   }
 
+  // The endpoint `https://aihorde.net/api/v2/documents/terms?format=html` returns the terms and conditions with a field "html" containing the HTML content.
+  public getTerms(): Observable<string> {
+    return this.httpClient.get<any>('https://aihorde.net/api/v2/documents/terms?format=html').pipe(
+      map(response => response.html)
+    );
+  }
+
   public getNews(count?: number): Observable<NewsItem[]> {
     return this.httpClient.get<any[]>('https://aihorde.net/api/v2/status/news').pipe(
       map(newsItems => count ? newsItems.slice(0, count) : newsItems),
