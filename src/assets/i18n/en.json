@@ -69,5 +69,6 @@
   "guis.ios": "iOS",
   "guis.desktop": "Desktop",
   "tools": "Tools",
-  "register_account": "Register an account"
+  "register_account": "Register an account",
+  "lemmy": "Lemmy"
 }
