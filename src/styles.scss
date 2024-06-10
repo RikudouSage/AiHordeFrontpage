@@ -44,6 +44,10 @@ h3, p, .underline-links {
   }
 }
 
+.m-auto {
+  margin: auto;
+}
+
 // The terms are dynamically loaded and due to encapsulation, we need to use the global styles
 .terms{
   ul {
@@ -56,7 +60,7 @@ h3, p, .underline-links {
       font-size: 1.5em;
       font-weight: bold;
       margin-bottom: 20px;
-      margin-top: 40px;  
+      margin-top: 40px;
       border-bottom: 3px solid #a0a0a0;
       display: inline-block;
   }

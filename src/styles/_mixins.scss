@@ -16,3 +16,9 @@
   margin-top: calc($num * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc($num * var(--tw-space-y-reverse));
 }
+
+@mixin px($amount) {
+  $value: 0.25rem * $amount;
+  padding-left: $value;
+  padding-right: $value;
+}

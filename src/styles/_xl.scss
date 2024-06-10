@@ -1,9 +1,14 @@
 @import "breakpoints";
+@import "mixins";
 
 @media screen and (min-width: $xl) {
   .xl {
     &\:grid-cols-4 {
       grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    }
+
+    &\:px-8 {
+      @include px(8);
     }
   }
 }
