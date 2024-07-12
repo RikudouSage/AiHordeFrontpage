@@ -19,7 +19,7 @@ export class TermsComponent {
   }
 
   public async ngOnInit(): Promise<void> {
-    this.terms.set(await toPromise(this.aiHorde.getTerms()));
+    this.terms.set(await toPromise(this.aiHorde.terms));
   }
 
 }

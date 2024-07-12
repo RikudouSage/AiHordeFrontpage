@@ -1,26 +1,8 @@
-@if (policyItems()) {
+@if (policy()) {
   <section class="bg-gray-50 dark:bg-gray-800 pt-12 lg:pt-0">
     <div class="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
       <div class="items-center gap-8 lg:grid xl:gap-16">
-        <div class="text-gray-500 sm:text-lg dark:text-gray-400">
-
-          @for (sectionPair of policyItems()!|keyvalue:NoSorterKeyValue; track sectionPair) {
-            <h2 class="mb-6 mt-12 text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">{{sectionPair.key}}</h2>
-
-            @for (subsectionPair of sectionPair.value|keyvalue:NoSorterKeyValue; track subsectionPair) {
-              @if (subsectionPair.key) {
-                <h3 class="mb-6 mt-6 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">{{subsectionPair.key}}</h3>
-              }
-              @for (item of subsectionPair.value; track item.text) {
-                <div class="mb-3 tracking-tight underline-links" [innerHTML]="
-                  item.text
-                    | replace:'{li}':'&nbsp;&nbsp;&#9679;&nbsp;'
-                    | replace:'{2li}':'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9679;&nbsp;'
-                "></div>
-              }
-            }
-          }
-        </div>
+        <div class="text-gray-500 sm:text-lg dark:text-gray-400 terms" [innerHTML]="policy()"></div>
       </div>
     </div>
   </section>
