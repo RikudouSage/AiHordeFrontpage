@@ -29,10 +29,22 @@
             <app-toggle-checkbox [description]="'transfer.source_api_key.remember' | transloco" formControlName="remember" />
           </div>
 
-          <div [class.mb-5]="form.value.targetUserValidated !== false" [class.mb-1]="form.value.targetUserValidated === false">
+          <div [class.mb-1]="educatorAccounts()" [class.mb-5]="!educatorAccounts()">
             <label for="target_user" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{'transfer.target_user' | transloco}}</label>
             <input formControlName="targetUser" type="text" id="target_user" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required [placeholder]="'transfer.target_user.description' | transloco:{exampleUser: exampleUser()}" />
           </div>
+          @if (educatorAccounts()) {
+            <div class="dark:text-white text-gray-900" [class.mb-5]="form.value.targetUserValidated !== false" [class.mb-1]="form.value.targetUserValidated === false">
+              <p class="mb-1"><small>{{'transfer.donate' | transloco}}</small></p>
+
+              <select formControlName="educatorAccount" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                @for (user of educatorAccounts(); track user.id) {
+                  <option [value]="null">{{'option.empty' | transloco}}</option>
+                  <option [value]="user.id">{{user.username}}</option>
+                }
+              </select>
+            </div>
+          }
           @if (form.value.targetUserValidated === false) {
             <p class="mb-5 text-red"><small>{{'invalid_target_user' | transloco}}</small></p>
           }

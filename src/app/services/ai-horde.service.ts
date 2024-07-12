@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {catchError, map, Observable, of} from "rxjs";
+import {catchError, map, Observable, of, zip} from "rxjs";
 import {ImageTotalStats} from "../types/image-total-stats";
 import {HordePerformance} from "../types/horde-performance";
 import {TextTotalStats} from "../types/text-total-stats";
@@ -106,5 +106,16 @@ export class AiHordeService {
       map(() => true),
       catchError(() => of(false)),
     );
+  }
+
+  public getEducatorAccounts(): Observable<HordeUser[]> {
+    // todo once filtering is available, filter it on the api, this is only temporary solution
+    const userIds = [258170];
+
+    return zip(
+      userIds.map(userId => this.getUserById(userId).pipe(
+        map(user => user!),
+      ))
+    )
   }
 }

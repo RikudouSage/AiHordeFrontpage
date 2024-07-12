@@ -14,6 +14,7 @@ import {debounceTime} from "rxjs";
 import {Subscriptions} from "../../helper/subscriptions";
 import {AiHordeService} from "../../services/ai-horde.service";
 import {HordeUser} from "../../types/horde-user";
+import {toSignal} from "@angular/core/rxjs-interop";
 
 @Component({
   selector: 'app-transfer',
@@ -50,13 +51,16 @@ export class TransferComponent implements OnInit, OnDestroy {
     }
 
     return this.currentUser()!.kudos;
-  })
+  });
+  public educatorAccounts = toSignal(this.aiHorde.getEducatorAccounts());
 
   public form = new FormGroup({
     apiKey: new FormControl<string>('', [Validators.required]),
     remember: new FormControl<boolean>(false),
     targetUser: new FormControl<string>('', [Validators.required]),
     kudosAmount: new FormControl<number>(1, [Validators.required, Validators.min(1)]),
+
+    educatorAccount: new FormControl<number | null>(null),
 
     apiKeyValidated: new FormControl<boolean | null>(null, [Validators.requiredTrue]),
     targetUserValidated: new FormControl<boolean | null>(null, [Validators.requiredTrue]),
@@ -89,6 +93,26 @@ export class TransferComponent implements OnInit, OnDestroy {
       kudosAmount ??= 0;
       this.form.patchValue({kudosAmountValidated: this.maximumKudos() !== null && kudosAmount <= this.maximumKudos()!});
     }));
+    this.subscriptions.add(this.form.controls.educatorAccount.valueChanges.subscribe(accountId => {
+      // @ts-ignore
+      if (accountId === 'null') {
+        accountId = null;
+      }
+
+      if (!accountId) {
+        this.form.controls.targetUser.enable();
+        this.form.patchValue({targetUser: ''});
+        return;
+      }
+
+      // @ts-ignore
+      accountId = Number(accountId);
+      const account = this.educatorAccounts()!.filter(account => account.id === accountId)[0];
+
+      this.form.controls.targetUser.disable();
+      this.form.patchValue({targetUser: account.username});
+    }));
+
     this.subscriptions.add(this.form.controls.apiKey.valueChanges.pipe(
       debounceTime(500)
     ).subscribe(async apiKey => {
