@@ -6,6 +6,7 @@ import {RouterLink} from "@angular/router";
 import {TranslocoMarkupComponent} from "ngx-transloco-markup";
 import {TranslocoPipe} from "@jsverse/transloco";
 import {MarkdownPipe} from "../../../../pipes/markdown.pipe";
+import {StripWrapperTagPipe} from "../../../../pipes/strip-wrapper-tag.pipe";
 
 
 @Component({
@@ -16,6 +17,7 @@ import {MarkdownPipe} from "../../../../pipes/markdown.pipe";
     TranslocoMarkupComponent,
     TranslocoPipe,
     MarkdownPipe,
+    StripWrapperTagPipe,
   ],
   templateUrl: './homepage-latest-news.component.html',
   styleUrl: './homepage-latest-news.component.scss'

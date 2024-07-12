@@ -18,9 +18,7 @@
               <span class="text-gray-500 dark:text-gray-200">{{newsItem.datePublished}}</span> - <span [innerHTML]="newsItem.title"></span>
             </h3>
             @if (newsItem.excerpt) {
-              @defer () {
-                <p class="mb-2 font-light lg:text-xl" [innerHTML]="newsItem.excerpt | markdown"></p>
-              }
+                <p class="mb-2 font-light lg:text-xl" [innerHTML]="newsItem.excerpt | markdown | stripWrapperTag"></p>
             }
             @if (newsItem.moreLink) {
               <p class="mb-2 font-light lg:text-xl">
