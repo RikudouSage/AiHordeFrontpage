@@ -15,7 +15,7 @@
         <p class="mb-4"><transloco key="transfer.visit_old" [params]="{oldUrl: '/transfer'}" /></p>
         <form class="max-w-sm mx-auto" [formGroup]="form" (ngSubmit)="transfer()">
           <div class="mb-2">
-            <label for="source_api_key" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{'transfer.source_api_key' | transloco}}</label>
+            <label for="source_api_key" class="block mb-2 font-medium text-gray-900 dark:text-white">{{'transfer.source_api_key' | transloco}}</label>
             <input formControlName="apiKey" type="text" id="source_api_key" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required [placeholder]="'transfer.source_api_key.description' | transloco" />
           </div>
           @if (form.value.apiKeyValidated === false) {
@@ -30,7 +30,7 @@
           </div>
 
           <div [class.mb-1]="educatorAccounts()" [class.mb-5]="!educatorAccounts()">
-            <label for="target_user" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{'transfer.target_user' | transloco}}</label>
+            <label for="target_user" class="block mb-2 font-medium text-gray-900 dark:text-white">{{'transfer.target_user' | transloco}}</label>
             <input formControlName="targetUser" type="text" id="target_user" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required [placeholder]="'transfer.target_user.description' | transloco:{exampleUser: exampleUser()}" />
           </div>
           @if (educatorAccounts()) {
@@ -50,7 +50,7 @@
           }
 
           <div [class.mb-5]="form.value.kudosAmountValidated !== false" [class.mb-1]="form.value.kudosAmountValidated === false">
-            <label for="kudos_amount" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{'transfer.kudos_amount' | transloco}}</label>
+            <label for="kudos_amount" class="block mb-2 font-medium text-gray-900 dark:text-white">{{'transfer.kudos_amount' | transloco}}</label>
             <input formControlName="kudosAmount" type="number" min="1" id="kudos_amount" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required [placeholder]="'transfer.kudos_amount.description' | transloco:{user: form.value.targetUser || ('transfer.kudos_amount.description.user_placeholder' | transloco)}" />
           </div>
           @if (form.value.kudosAmountValidated === false) {

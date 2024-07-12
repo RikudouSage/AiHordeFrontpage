@@ -174,7 +174,7 @@ export class TransferComponent implements OnInit, OnDestroy {
 
     const success = await toPromise(this.aiHorde.transferKudos(
       this.form.value.apiKey!,
-      this.form.value.targetUser!,
+      this.form.controls.targetUser.value!,
       this.form.value.kudosAmount!,
     ));
     this.sentSuccessfully.set(success);
