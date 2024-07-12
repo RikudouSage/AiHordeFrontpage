@@ -90,6 +90,7 @@ export class TransferComponent implements OnInit, OnDestroy {
     const apiKey = this.database.get('api_key', remember ? StorageType.Permanent : StorageType.Session);
 
     this.subscriptions.add(this.form.controls.apiKey.valueChanges.subscribe(() => {
+      this.currentUser.set(null);
       this.form.patchValue({apiKeyValidated: null});
     }));
     this.subscriptions.add(this.form.controls.targetUser.valueChanges.subscribe(() => {
@@ -97,7 +98,11 @@ export class TransferComponent implements OnInit, OnDestroy {
     }));
     this.subscriptions.add(this.form.controls.kudosAmount.valueChanges.subscribe(kudosAmount => {
       kudosAmount ??= 0;
-      this.form.patchValue({kudosAmountValidated: this.maximumKudos() !== null && kudosAmount <= this.maximumKudos()!});
+      if (this.maximumKudos() === null) {
+        this.form.patchValue({kudosAmountValidated: null});
+        return;
+      }
+      this.form.patchValue({kudosAmountValidated: kudosAmount <= this.maximumKudos()!});
     }));
     this.subscriptions.add(this.form.controls.educatorAccount.valueChanges.subscribe(accountId => {
       // @ts-ignore
