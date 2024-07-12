@@ -90,5 +90,6 @@
   "transfer.too_many_kudos": "Eh, you don't have that many kudos",
   "transfer.donate": "or donate them to one of the educator accounts:",
   "option.empty": "-- none --",
-  "transfer.account.kudos_amount": "has {{amountFormatted}} kudos"
+  "transfer.account.kudos_amount": "has {{amountFormatted}} kudos",
+  "educators.explanation": "An educator account provides teachers and educational institutions with access to AI Horde for generating AI images."
 }

@@ -16,6 +16,7 @@ import {AiHordeService} from "../../services/ai-horde.service";
 import {HordeUser} from "../../types/horde-user";
 import {toSignal} from "@angular/core/rxjs-interop";
 import {FormatNumberPipe} from "../../pipes/format-number.pipe";
+import {ActivatedRoute, RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-transfer',
@@ -28,7 +29,8 @@ import {FormatNumberPipe} from "../../pipes/format-number.pipe";
     ToggleCheckboxComponent,
     ReactiveFormsModule,
     JsonPipe,
-    FormatNumberPipe
+    FormatNumberPipe,
+    RouterLink
   ],
   templateUrl: './transfer.component.html',
   styleUrl: './transfer.component.scss'
@@ -55,6 +57,7 @@ export class TransferComponent implements OnInit, OnDestroy {
     return this.currentUser()!.kudos;
   });
   public educatorAccounts = toSignal(this.aiHorde.getEducatorAccounts());
+  public fragment = signal<string|null>(null);
 
   public form = new FormGroup({
     apiKey: new FormControl<string>('', [Validators.required]),
@@ -75,6 +78,7 @@ export class TransferComponent implements OnInit, OnDestroy {
     private readonly footerColor: FooterColorService,
     private readonly database: DatabaseService,
     private readonly aiHorde: AiHordeService,
+    public readonly activatedRoute: ActivatedRoute,
   ) {
   }
 
@@ -159,6 +163,13 @@ export class TransferComponent implements OnInit, OnDestroy {
       this.database.store('api_key', value.apiKey ?? '', value.remember ? StorageType.Permanent : StorageType.Session);
 
       this.sentSuccessfully.set(null);
+    }));
+
+    this.subscriptions.add(this.activatedRoute.fragment.subscribe(fragment => {
+      this.fragment.set(fragment);
+      if (fragment) {
+        document.querySelector(`#${fragment}`)?.scrollIntoView();
+      }
     }));
   }
 
