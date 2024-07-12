@@ -15,6 +15,7 @@ import {Subscriptions} from "../../helper/subscriptions";
 import {AiHordeService} from "../../services/ai-horde.service";
 import {HordeUser} from "../../types/horde-user";
 import {toSignal} from "@angular/core/rxjs-interop";
+import {FormatNumberPipe} from "../../pipes/format-number.pipe";
 
 @Component({
   selector: 'app-transfer',
@@ -26,7 +27,8 @@ import {toSignal} from "@angular/core/rxjs-interop";
     TranslocoPipe,
     ToggleCheckboxComponent,
     ReactiveFormsModule,
-    JsonPipe
+    JsonPipe,
+    FormatNumberPipe
   ],
   templateUrl: './transfer.component.html',
   styleUrl: './transfer.component.scss'

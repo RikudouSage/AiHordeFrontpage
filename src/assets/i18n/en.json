@@ -89,5 +89,6 @@
   "transfer.error": "There was an error while transferring the kudos, please try again later.",
   "transfer.too_many_kudos": "Eh, you don't have that many kudos",
   "transfer.donate": "or donate them to one of the educator accounts:",
-  "option.empty": "-- none --"
+  "option.empty": "-- none --",
+  "transfer.account.kudos_amount": "has {{amountFormatted}} kudos"
 }
