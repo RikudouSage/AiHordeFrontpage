@@ -70,5 +70,22 @@
   "guis.desktop": "Desktop",
   "tools": "Tools",
   "register_account": "Register an account",
-  "lemmy": "Lemmy"
+  "lemmy": "Lemmy",
+  "transfer": "Transfer kudos",
+  "transfer.visit_old": "If you would like to log in using one of the account providers (Google, Discord, Github), you might need to use [link:oldUrl]the old version of the transfer page[/link].",
+  "transfer.source_api_key": "Your API key",
+  "transfer.target_user": "Unique user ID",
+  "transfer.target_user.description": "For example: {{exampleUser}}",
+  "transfer.source_api_key.description": "Type the API key that belongs to your user",
+  "transfer.source_api_key.remember": "Remember the API key?",
+  "other_links": "Other links",
+  "current_user": "Current user: {{user}}",
+  "invalid_api_key": "The api key is not valid",
+  "invalid_target_user": "The user does not exist",
+  "transfer.kudos_amount": "Kudos amount",
+  "transfer.kudos_amount.description": "How many kudos do you want {{user}} to receive",
+  "transfer.kudos_amount.description.user_placeholder": "the user",
+  "transfer.success": "The kudos have been successfully transferred!",
+  "transfer.error": "There was an error while transferring the kudos, please try again later.",
+  "transfer.too_many_kudos": "Eh, you don't have that many kudos"
 }

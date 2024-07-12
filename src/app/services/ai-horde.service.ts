@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {map, Observable, of} from "rxjs";
+import {catchError, map, Observable, of} from "rxjs";
 import {ImageTotalStats} from "../types/image-total-stats";
 import {HordePerformance} from "../types/horde-performance";
 import {TextTotalStats} from "../types/text-total-stats";
 import {NewsItem} from "../types/news.types";
 import {SingleInterrogationStatPoint} from "../types/single-interrogation-stat-point";
 import {HtmlHordeDocument} from "../types/horde-document";
+import {HordeUser} from "../types/horde-user";
 
 @Injectable({
   providedIn: 'root'
@@ -74,6 +75,36 @@ export class AiHordeService {
           moreLink: newsItem.more_info_urls.length > 0 ? newsItem.more_info_urls[0] : null
         };
       }))
+    );
+  }
+
+  public getUserByApiKey(apiKey: string): Observable<HordeUser | null> {
+    return this.httpClient.get<HordeUser>('https://aihorde.net/api/v2/find_user', {
+      headers: {
+        apikey: apiKey,
+      }
+    }).pipe(
+      catchError(() => of(null)),
+    );
+  }
+
+  public getUserById(id: number): Observable<HordeUser | null> {
+    return this.httpClient.get<HordeUser>(`https://aihorde.net/api/v2/users/${id}`).pipe(
+      catchError(() => of(null)),
+    );
+  }
+
+  public transferKudos(apiKey: string, targetUser: string, amount: number): Observable<boolean> {
+    return this.httpClient.post<any>('https://aihorde.net/api/v2/kudos/transfer', {
+      username: targetUser,
+      amount: amount,
+    }, {
+      headers: {
+        apikey: apiKey,
+      },
+    }).pipe(
+      map(() => true),
+      catchError(() => of(false)),
     );
   }
 }

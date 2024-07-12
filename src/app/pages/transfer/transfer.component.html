@@ -1,0 +1,68 @@
+<section class="bg-white dark:bg-gray-900">
+  <div class="grid max-w-screen-xl px-4 pt-20 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:pt-28">
+    <div class="mr-auto place-self-center lg:col-span-7">
+      <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white">
+        <transloco key="transfer" />
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section class="bg-gray-50 dark:bg-gray-800">
+  <div class="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
+    <div class="items-center gap-8 lg:grid xl:gap-16">
+      <div class="text-gray-500 sm:text-lg dark:text-gray-400">
+        <p class="mb-4"><transloco key="transfer.visit_old" [params]="{oldUrl: '/transfer'}" /></p>
+        <form class="max-w-sm mx-auto" [formGroup]="form" (ngSubmit)="transfer()">
+          <div class="mb-2">
+            <label for="source_api_key" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{'transfer.source_api_key' | transloco}}</label>
+            <input formControlName="apiKey" type="text" id="source_api_key" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required [placeholder]="'transfer.source_api_key.description' | transloco" />
+          </div>
+          @if (form.value.apiKeyValidated === false) {
+            <p class="mb-1 text-red"><small>{{'invalid_api_key' | transloco}}</small></p>
+          }
+          @if (currentUser()) {
+            <p class="mb-1"><small>{{'current_user' | transloco:{user: currentUser()!.username} }}</small></p>
+          }
+
+          <div class="mb-5">
+            <app-toggle-checkbox [description]="'transfer.source_api_key.remember' | transloco" formControlName="remember" />
+          </div>
+
+          <div [class.mb-5]="form.value.targetUserValidated !== false" [class.mb-1]="form.value.targetUserValidated === false">
+            <label for="target_user" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{'transfer.target_user' | transloco}}</label>
+            <input formControlName="targetUser" type="text" id="target_user" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required [placeholder]="'transfer.target_user.description' | transloco:{exampleUser: exampleUser()}" />
+          </div>
+          @if (form.value.targetUserValidated === false) {
+            <p class="mb-5 text-red"><small>{{'invalid_target_user' | transloco}}</small></p>
+          }
+
+          <div [class.mb-5]="form.value.kudosAmountValidated !== false" [class.mb-1]="form.value.kudosAmountValidated === false">
+            <label for="kudos_amount" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{'transfer.kudos_amount' | transloco}}</label>
+            <input formControlName="kudosAmount" type="number" min="1" id="kudos_amount" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required [placeholder]="'transfer.kudos_amount.description' | transloco:{user: form.value.targetUser || ('transfer.kudos_amount.description.user_placeholder' | transloco)}" />
+          </div>
+          @if (form.value.kudosAmountValidated === false) {
+            <p class="mb-5 text-red"><small>{{'transfer.too_many_kudos' | transloco}}</small></p>
+          }
+
+          @if (sentSuccessfully() !== null) {
+            @if (sentSuccessfully()) {
+              <p class="mb-5 text-green-500">{{'transfer.success' | transloco}}</p>
+            } @else {
+              <p class="mb-5 text-red">{{'transfer.error' | transloco}}</p>
+            }
+          }
+          <button
+            [disabled]="!form.valid"
+            [class.cursor-not-allowed]="!form.valid"
+            [class.bg-gray-600]="!form.valid"
+            [class.text-gray-500]="!form.valid"
+            [class.bg-blue-700]="form.valid"
+            [class.dark:bg-blue-600]="form.valid"
+            [class.text-white]="form.valid"
+            type="submit" class="hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
