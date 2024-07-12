@@ -1,30 +1,32 @@
-<section class="bg-gray-50 dark:bg-gray-800">
-  <div class="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
-    <div class="items-center gap-8 lg:grid xl:gap-16">
-      <div class="text-gray-500 sm:text-lg dark:text-gray-400">
-        <h2 class="mb-6 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">
-          <a routerLink="/news">
-            <transloco key="latest_news" />
-          </a>
-        </h2>
-        @for (newsItem of news(); track newsItem.title) {
-          <div class="mb-6">
-            <h3 class="mb-3 text-2xl text-gray-900 dark:text-white">
-              <span class="text-gray-500 dark:text-gray-200">{{newsItem.date_published}}</span> - <span [innerHTML]="newsItem.title"></span>
-            </h3>
-            @if (newsItem.excerpt) {
-              <p class="mb-2 font-light lg:text-xl" [innerHTML]="newsItem.excerpt"></p>
-            }
-            @if (newsItem.moreLink) {
-              <p class="mb-2 font-light lg:text-xl">
-                <a [href]="newsItem.moreLink" target="_blank">{{'read_more' | transloco}}</a>
-              </p>
-            }
-          </div>
-        } @empty {
-          <p class="mb-2 font-light lg:text-xl">{{'no_news' | transloco}}</p>
-        }
+@defer () {
+  <section class="bg-gray-50 dark:bg-gray-800">
+    <div class="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
+      <div class="items-center gap-8 lg:grid xl:gap-16">
+        <div class="text-gray-500 sm:text-lg dark:text-gray-400">
+          <h2 class="mb-6 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+            <a routerLink="/news">
+              <transloco key="latest_news" />
+            </a>
+          </h2>
+          @for (newsItem of news(); track newsItem.title) {
+            <div class="mb-6">
+              <h3 class="mb-3 text-2xl text-gray-900 dark:text-white">
+                <span class="text-gray-500 dark:text-gray-200">{{newsItem.datePublished}}</span> - <span [innerHTML]="newsItem.title"></span>
+              </h3>
+              @if (newsItem.excerpt) {
+                <p class="mb-2 font-light lg:text-xl" [innerHTML]="newsItem.excerpt | markdown"></p>
+              }
+              @if (newsItem.moreLink) {
+                <p class="mb-2 font-light lg:text-xl">
+                  <a [href]="newsItem.moreLink" target="_blank">{{'read_more' | transloco}}</a>
+                </p>
+              }
+            </div>
+          } @empty {
+            <p class="mb-2 font-light lg:text-xl">{{'no_news' | transloco}}</p>
+          }
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+}

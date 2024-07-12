@@ -5,6 +5,7 @@ import {toPromise} from "../../../../types/resolvable";
 import {RouterLink} from "@angular/router";
 import {TranslocoMarkupComponent} from "ngx-transloco-markup";
 import {TranslocoPipe} from "@jsverse/transloco";
+import {MarkdownPipe} from "../../../../pipes/markdown.pipe";
 
 
 @Component({
@@ -14,6 +15,7 @@ import {TranslocoPipe} from "@jsverse/transloco";
     RouterLink,
     TranslocoMarkupComponent,
     TranslocoPipe,
+    MarkdownPipe,
   ],
   templateUrl: './homepage-latest-news.component.html',
   styleUrl: './homepage-latest-news.component.scss'
