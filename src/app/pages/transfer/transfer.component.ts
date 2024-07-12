@@ -14,6 +14,9 @@ import {debounceTime} from "rxjs";
 import {Subscriptions} from "../../helper/subscriptions";
 import {AiHordeService} from "../../services/ai-horde.service";
 import {HordeUser} from "../../types/horde-user";
+import {toSignal} from "@angular/core/rxjs-interop";
+import {FormatNumberPipe} from "../../pipes/format-number.pipe";
+import {ActivatedRoute, RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-transfer',
@@ -25,7 +28,9 @@ import {HordeUser} from "../../types/horde-user";
     TranslocoPipe,
     ToggleCheckboxComponent,
     ReactiveFormsModule,
-    JsonPipe
+    JsonPipe,
+    FormatNumberPipe,
+    RouterLink
   ],
   templateUrl: './transfer.component.html',
   styleUrl: './transfer.component.scss'
@@ -50,13 +55,17 @@ export class TransferComponent implements OnInit, OnDestroy {
     }
 
     return this.currentUser()!.kudos;
-  })
+  });
+  public educatorAccounts = toSignal(this.aiHorde.getEducatorAccounts());
+  public fragment = signal<string|null>(null);
 
   public form = new FormGroup({
     apiKey: new FormControl<string>('', [Validators.required]),
     remember: new FormControl<boolean>(false),
     targetUser: new FormControl<string>('', [Validators.required]),
     kudosAmount: new FormControl<number>(1, [Validators.required, Validators.min(1)]),
+
+    educatorAccount: new FormControl<number | null>(null),
 
     apiKeyValidated: new FormControl<boolean | null>(null, [Validators.requiredTrue]),
     targetUserValidated: new FormControl<boolean | null>(null, [Validators.requiredTrue]),
@@ -69,6 +78,7 @@ export class TransferComponent implements OnInit, OnDestroy {
     private readonly footerColor: FooterColorService,
     private readonly database: DatabaseService,
     private readonly aiHorde: AiHordeService,
+    public readonly activatedRoute: ActivatedRoute,
   ) {
   }
 
@@ -89,6 +99,26 @@ export class TransferComponent implements OnInit, OnDestroy {
       kudosAmount ??= 0;
       this.form.patchValue({kudosAmountValidated: this.maximumKudos() !== null && kudosAmount <= this.maximumKudos()!});
     }));
+    this.subscriptions.add(this.form.controls.educatorAccount.valueChanges.subscribe(accountId => {
+      // @ts-ignore
+      if (accountId === 'null') {
+        accountId = null;
+      }
+
+      if (!accountId) {
+        this.form.controls.targetUser.enable();
+        this.form.patchValue({targetUser: ''});
+        return;
+      }
+
+      // @ts-ignore
+      accountId = Number(accountId);
+      const account = this.educatorAccounts()!.filter(account => account.id === accountId)[0];
+
+      this.form.controls.targetUser.disable();
+      this.form.patchValue({targetUser: account.username});
+    }));
+
     this.subscriptions.add(this.form.controls.apiKey.valueChanges.pipe(
       debounceTime(500)
     ).subscribe(async apiKey => {
@@ -134,6 +164,13 @@ export class TransferComponent implements OnInit, OnDestroy {
 
       this.sentSuccessfully.set(null);
     }));
+
+    this.subscriptions.add(this.activatedRoute.fragment.subscribe(fragment => {
+      this.fragment.set(fragment);
+      if (fragment) {
+        document.querySelector(`#${fragment}`)?.scrollIntoView();
+      }
+    }));
   }
 
   public ngOnDestroy(): void {
@@ -148,7 +185,7 @@ export class TransferComponent implements OnInit, OnDestroy {
 
     const success = await toPromise(this.aiHorde.transferKudos(
       this.form.value.apiKey!,
-      this.form.value.targetUser!,
+      this.form.controls.targetUser.value!,
       this.form.value.kudosAmount!,
     ));
     this.sentSuccessfully.set(success);

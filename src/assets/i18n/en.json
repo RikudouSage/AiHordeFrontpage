@@ -74,7 +74,7 @@
   "transfer": "Transfer kudos",
   "transfer.visit_old": "If you would like to log in using one of the account providers (Google, Discord, Github), you might need to use [link:oldUrl]the old version of the transfer page[/link].",
   "transfer.source_api_key": "Your API key",
-  "transfer.target_user": "Unique user ID",
+  "transfer.target_user": "The receiving user",
   "transfer.target_user.description": "For example: {{exampleUser}}",
   "transfer.source_api_key.description": "Type the API key that belongs to your user",
   "transfer.source_api_key.remember": "Remember the API key?",
@@ -87,5 +87,9 @@
   "transfer.kudos_amount.description.user_placeholder": "the user",
   "transfer.success": "The kudos have been successfully transferred!",
   "transfer.error": "There was an error while transferring the kudos, please try again later.",
-  "transfer.too_many_kudos": "Eh, you don't have that many kudos"
+  "transfer.too_many_kudos": "Eh, you don't have that many kudos",
+  "transfer.donate": "or donate them to one of the educator accounts:",
+  "option.empty": "-- none --",
+  "transfer.account.kudos_amount": "has {{amountFormatted}} kudos",
+  "educators.explanation": "An educator account provides teachers and educational institutions with access to AI Horde for generating AI images."
 }
