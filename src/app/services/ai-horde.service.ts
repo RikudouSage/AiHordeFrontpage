@@ -6,6 +6,7 @@ import {HordePerformance} from "../types/horde-performance";
 import {TextTotalStats} from "../types/text-total-stats";
 import {NewsItem} from "../types/news.types";
 import {SingleInterrogationStatPoint} from "../types/single-interrogation-stat-point";
+import {HtmlHordeDocument} from "../types/horde-document";
 
 @Injectable({
   providedIn: 'root'
@@ -48,10 +49,15 @@ export class AiHordeService {
     });
   }
 
-  // The endpoint `https://aihorde.net/api/v2/documents/terms?format=html` returns the terms and conditions with a field "html" containing the HTML content.
-  public getTerms(): Observable<string> {
-    return this.httpClient.get<any>('https://aihorde.net/api/v2/documents/terms?format=html').pipe(
-      map(response => response.html)
+  public get terms(): Observable<string> {
+    return this.httpClient.get<HtmlHordeDocument>('https://aihorde.net/api/v2/documents/terms?format=html').pipe(
+      map(response => response.html),
+    );
+  }
+
+  public get privacyPolicy(): Observable<string> {
+    return this.httpClient.get<HtmlHordeDocument>('https://aihorde.net/api/v2/documents/privacy?format=html').pipe(
+      map(response => response.html),
     );
   }
 
