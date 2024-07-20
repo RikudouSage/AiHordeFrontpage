@@ -88,8 +88,8 @@
   "transfer.success": "The kudos have been successfully transferred!",
   "transfer.error": "There was an error while transferring the kudos, please try again later.",
   "transfer.too_many_kudos": "Eh, you don't have that many kudos",
-  "transfer.donate": "or donate them to one of the educator accounts:",
+  "transfer.donate": "or donate them to an educator account: ",
   "option.empty": "-- none --",
   "transfer.account.kudos_amount": "has {{amountFormatted}} kudos",
-  "educators.explanation": "An educator account provides teachers and educational institutions with access to AI Horde for generating AI images."
+  "educators.explanation": "Educator accounts are special accounts made available to teachers and educational institutions for classroom use of AI Horde."
 }

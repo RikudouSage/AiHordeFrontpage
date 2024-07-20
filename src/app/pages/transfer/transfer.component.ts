@@ -149,7 +149,7 @@ export class TransferComponent implements OnInit, OnDestroy {
 
       const id = Number(parts[1]);
       const user = await toPromise(this.aiHorde.getUserById(id));
-      this.form.patchValue({targetUserValidated: user !== null && targetUser === user.username});
+      this.form.patchValue({targetUserValidated: user !== null && targetUser.toLowerCase() === user.username.toLowerCase()});
     }));
 
     this.form.patchValue({
